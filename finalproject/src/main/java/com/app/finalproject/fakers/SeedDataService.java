@@ -45,6 +45,7 @@ public class SeedDataService {
         this.createBootcamp();
         this.createBootcamp2();
         this.createProcessState();
+        this.createProcessState2();
         this.createMultipleCandidates();
     }
 
@@ -67,6 +68,13 @@ public class SeedDataService {
     public ProcessState createProcessState (){
         var process = new ProcessState();
         process.setName("First process");
+        processStateRepository.save(process);
+        return  process;
+    }
+
+    public ProcessState createProcessState2 (){
+        var process = new ProcessState();
+        process.setName("Second process");
         processStateRepository.save(process);
         return  process;
     }

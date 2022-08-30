@@ -14,4 +14,38 @@
   "bootcampName": "Osona",
   "processState": "First process"
 
-}]
+},
+  {
+    "name": "name",
+    "lastname": "lastname",
+    "secondlastname": "2ndlastname",
+    "email": "email",
+    "phone": 123456789,
+    "age": 20,
+    "gender": "male",
+    "nationality": "nation",
+    "laboralsituation": "laboral",
+    "sololearnprogress": "solo",
+    "codeacademyprogress": "code",
+    "assistedtoinformativesession": true,
+    "bootcampName": "Osona",
+    "processState": "First process"
+
+  },
+  {
+    "name": "name",
+    "lastname": "lastname",
+    "secondlastname": "2ndlastname",
+    "email": "email",
+    "phone": 123456789,
+    "age": 20,
+    "gender": "male",
+    "nationality": "nation",
+    "laboralsituation": "laboral",
+    "sololearnprogress": "solo",
+    "codeacademyprogress": "code",
+    "assistedtoinformativesession": true,
+    "bootcampName": "Femtech",
+    "processState": "First process"
+
+  }]
