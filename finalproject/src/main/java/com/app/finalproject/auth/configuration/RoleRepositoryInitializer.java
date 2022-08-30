@@ -48,7 +48,6 @@ public class RoleRepositoryInitializer {
         user.setRoles(roleRepository.findAll().stream().collect(Collectors.toSet()));
         user.setEmail("admin@admin.com");
         user.setUsername("Admin");
-        user.setImg("https://pixabay.com/static/img/profile_image_dummy.svg");
         user.setPassword(encoder.encode("12345678"));
 
         authRepository.save(user);

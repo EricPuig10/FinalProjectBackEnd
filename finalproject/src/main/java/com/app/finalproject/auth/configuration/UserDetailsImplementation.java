@@ -15,7 +15,6 @@ public class UserDetailsImplementation implements UserDetails {
 
     private Long id;
 
-    private String img;
 
     private String username;
 
@@ -26,13 +25,12 @@ public class UserDetailsImplementation implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImplementation(Long id, String username, String email, String password, String img,
+    public UserDetailsImplementation(Long id, String username, String email, String password,
                                      Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.img = img;
         this.authorities = authorities;
     }
 
@@ -46,7 +44,6 @@ public class UserDetailsImplementation implements UserDetails {
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getImg(),
                 authorities);
     }
 
@@ -59,8 +56,6 @@ public class UserDetailsImplementation implements UserDetails {
         return id;
     }
 
-    public String getImg() { return img;}
-    public String setImg(String img) { return img;}
 
     public String getEmail() {
         return email;

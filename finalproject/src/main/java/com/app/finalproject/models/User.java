@@ -19,7 +19,6 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String img;
     private String username;
 
     private String email;

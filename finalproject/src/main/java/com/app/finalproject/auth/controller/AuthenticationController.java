@@ -62,7 +62,6 @@ public class AuthenticationController {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
-                userDetails.getImg(),
                 roles));
     }
 
