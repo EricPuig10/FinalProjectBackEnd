@@ -10,6 +10,8 @@
   "laboralsituation": "laboral",
   "sololearnprogress": "solo",
   "codeacademyprogress": "code",
-  "bootcamp": "Osona",
-  "assistedtoinformativesession": true
+  "assistedtoinformativesession": true,
+  "bootcampName": "Osona",
+  "processState": "First process"
+
 }]

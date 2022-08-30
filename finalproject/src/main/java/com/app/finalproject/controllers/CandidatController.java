@@ -2,9 +2,11 @@ package com.app.finalproject.controllers;
 
 
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
+import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 import com.app.finalproject.services.ICandidatService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +25,10 @@ public class CandidatController {
         this.authenticationFacade = authenticationFacade;
     }
 
+
+
     @GetMapping("/candidats")
-    List<Candidat> getAll(){
+    List<CandidatRes> getAll(){
         User auth = authenticationFacade.getAuthUser();
         return candidatService.getAll(auth);
     }

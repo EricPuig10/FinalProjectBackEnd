@@ -22,7 +22,7 @@ public class Bootcamp {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String bootcampname;
+    private String bootcampName;
 
     private boolean isPresencial;
 
@@ -31,9 +31,9 @@ public class Bootcamp {
     @JsonIgnore
     private List<Candidat> candidatsList = new ArrayList<>();
 
-    public Bootcamp(Long id, String bootcampname, boolean isPresencial) {
+    public Bootcamp(Long id, String bootcampName, boolean isPresencial) {
         this.id = id;
-        this.bootcampname = bootcampname;
+        this.bootcampName = bootcampName;
         this.isPresencial = isPresencial;
     }
 }

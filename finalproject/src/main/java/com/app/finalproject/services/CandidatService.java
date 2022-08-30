@@ -1,5 +1,7 @@
 package com.app.finalproject.services;
 
+import com.app.finalproject.dtos.candidats.CandidatRes;
+import com.app.finalproject.mappers.CandidatMapper;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.ICandidatRepository;
@@ -18,11 +20,11 @@ public class CandidatService implements ICandidatService {
     }
 
     @Override
-    public List<Candidat> getAll(User auth) {
+    public List<CandidatRes> getAll(User auth) {
         List <Candidat> candidats = candidatRepository.findAll();
-        List <Candidat> candidatsList = new ArrayList<>();
+        List <CandidatRes> candidatsList = new ArrayList<>();
         candidats.forEach(Candidat -> {
-            Candidat candidat = new Candidat();
+            CandidatRes candidat = new CandidatMapper().mapToRes(Candidat, auth);
             candidatsList.add(candidat);
         });
         return candidatsList;

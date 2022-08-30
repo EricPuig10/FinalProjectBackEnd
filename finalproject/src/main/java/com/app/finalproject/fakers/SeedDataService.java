@@ -1,5 +1,7 @@
 package com.app.finalproject.fakers;
 
+import com.app.finalproject.dtos.candidats.JsonRequest;
+import com.app.finalproject.models.ProcessState;
 import com.app.finalproject.repositories.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.app.finalproject.models.Bootcamp;
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @Component
@@ -41,6 +44,7 @@ public class SeedDataService {
     public void addData(){
         this.createBootcamp();
         this.createBootcamp2();
+        this.createProcessState();
         this.createMultipleCandidates();
     }
 
@@ -48,25 +52,32 @@ public class SeedDataService {
 
     public Bootcamp createBootcamp (){
         var bootcamp = new Bootcamp();
-        bootcamp.setBootcampname("OSONA");
+        bootcamp.setBootcampName("Osona");
         bootcampRepository.save(bootcamp);
         return bootcamp;
     }
 
     public Bootcamp createBootcamp2 (){
         var bootcamp = new Bootcamp();
-        bootcamp.setBootcampname("FEMTECH");
+        bootcamp.setBootcampName("Femtech");
         bootcampRepository.save(bootcamp);
         return bootcamp;
     }
 
-    public Candidat createCandidat(Long age, String email, boolean assist, String bootcampname, String gender, String code, String name, String lastname, String secondlastname, String laboral, String nation, Long phone, String solo /*, String processState*/){
+    public ProcessState createProcessState (){
+        var process = new ProcessState();
+        process.setName("First process");
+        processStateRepository.save(process);
+        return  process;
+    }
+
+    public Candidat createCandidat(Long age, String email, boolean assist, String bootcampName, String gender, String code, String name, String lastname, String secondlastname, String laboral, String nation, Long phone, String solo , String processState){
         var candidat = new Candidat();
 
         candidat.setAge(age);
         candidat.setEmail(email);
         candidat.setAssistedtoinformativesession(assist);
-        candidat.setBootcamp(bootcampRepository.findByBootcampname(bootcampname).get());
+        candidat.setBootcamp(bootcampRepository.findByBootcampName(bootcampName).get());
         candidat.setGender(gender);
         candidat.setCodeacademyprogress(code);
         candidat.setName(name);
@@ -76,7 +87,7 @@ public class SeedDataService {
         candidat.setNationality(nation);
         candidat.setPhone(phone);
         candidat.setSololearnprogress(solo);
-        //candidat.setProcessState(processStateRepository.findByName(processState).get());
+        candidat.setProcessState(processStateRepository.findByName(processState).get());
 
         return candidat;
     }
@@ -85,14 +96,14 @@ public class SeedDataService {
     public void createMultipleCandidates(){
         List<Candidat> candidats = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
-        TypeReference<List<Candidat>> typeReference = new TypeReference<List<Candidat>>(){};
+        TypeReference<List<JsonRequest>> typeReference = new TypeReference<List<JsonRequest>>(){};
         InputStream inputStream = TypeReference.class.getResourceAsStream("/candidats.json");
         try{
-            List<Candidat> candidatReq = mapper.readValue(inputStream, typeReference);
-            candidatReq.forEach(req -> candidats.add(this.createCandidat(req.getAge(), req.getEmail(), req.isAssistedtoinformativesession(), req.getBootcamp().getBootcampname(), req.getGender(), req.getCodeacademyprogress(), req.getName(), req.getLastname(), req.getSecondlastname(),  req.getLaboralsituation(), req.getNationality(), req.getPhone(), req.getSololearnprogress() /*,req.getProcessState().toString() */)));
+            List<JsonRequest> candidatReq = mapper.readValue(inputStream, typeReference);
+            candidatReq.forEach(req -> candidats.add(this.createCandidat(req.getAge(), req.getEmail(), req.isAssistedtoinformativesession(), req.getBootcampName(), req.getGender(), req.getCodeacademyprogress(), req.getName(), req.getLastname(), req.getSecondlastname(),  req.getLaboralsituation(), req.getNationality(), req.getPhone(), req.getSololearnprogress() , req.getProcessState() )));
             candidatRepository.saveAll(candidats);
             System.out.println("Candidats saved!");
-        }catch (IOException e){
+        }catch (IOException | NoSuchElementException e){
             System.out.println("Unable to save candidats: "+ e.getMessage());
         }
     }
