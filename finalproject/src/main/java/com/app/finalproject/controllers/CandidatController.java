@@ -27,6 +27,7 @@ public class CandidatController {
 
 
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/candidats")
     List<CandidatRes> getAll(){
         User auth = authenticationFacade.getAuthUser();
