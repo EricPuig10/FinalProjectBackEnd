@@ -5,6 +5,9 @@ import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CandidatMapper {
     public CandidatRes mapToRes(Candidat candidat, User auth){
         CandidatRes resCandidat = new CandidatRes();
@@ -24,5 +27,11 @@ public class CandidatMapper {
         resCandidat.setBootcamp(candidat.getBootcamp());
         resCandidat.setProcessState(candidat.getProcessState());
         return  resCandidat;
+    }
+
+    public List<CandidatRes> mapMultipleMomentsToRes(List<Candidat> candidats, User auth){
+        List<CandidatRes> res = new ArrayList<>();
+        candidats.forEach(Candidat -> res.add(this.mapToRes(Candidat, auth)));
+        return res;
     }
 }

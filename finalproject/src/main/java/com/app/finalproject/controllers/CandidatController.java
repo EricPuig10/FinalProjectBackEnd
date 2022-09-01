@@ -9,6 +9,7 @@ import com.app.finalproject.services.ICandidatService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,5 +33,13 @@ public class CandidatController {
     List<CandidatRes> getAll(){
         User auth = authenticationFacade.getAuthUser();
         return candidatService.getAll(auth);
+    }
+
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/candidats/{id}/bootcamp")
+    List<CandidatRes> getCandidatsByBootcamp(@PathVariable Long id){
+        User authUser = authenticationFacade.getAuthUser();
+        return candidatService.findByBootcampCandidats(id, authUser);
     }
 }

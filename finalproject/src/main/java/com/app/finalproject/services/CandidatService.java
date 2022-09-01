@@ -31,5 +31,11 @@ public class CandidatService implements ICandidatService {
 
     }
 
+    @Override
+    public List<CandidatRes> findByBootcampCandidats(Long id, User auth) {
+
+        return new CandidatMapper().mapMultipleMomentsToRes(candidatRepository.getCandidatsByBootcampId(id), auth);
+    }
+
 
 }
