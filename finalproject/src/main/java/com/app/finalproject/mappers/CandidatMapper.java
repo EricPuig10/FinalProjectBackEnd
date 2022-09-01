@@ -35,4 +35,10 @@ public class CandidatMapper {
         candidats.forEach(Candidat -> res.add(this.mapToRes(Candidat, auth)));
         return res;
     }
+
+    public List<CandidatRes> mapMultipleCandidatesToRes(List<Candidat> candidats, User auth) {
+        List<CandidatRes> res = new ArrayList<>();
+        candidats.forEach(Candidat -> res.add(this.mapToRes(Candidat, auth)));
+        return res;
+    }
 }

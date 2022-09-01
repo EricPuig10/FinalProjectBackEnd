@@ -12,4 +12,6 @@ public interface ICandidatService {
     List<CandidatRes> findByBootcampCandidats(Long id, User authUser);
 
     List<CandidatRes> findByProcessCandidats(Long id, User authUser);
+
+    List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser);
 }
