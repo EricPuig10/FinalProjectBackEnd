@@ -42,4 +42,11 @@ public class CandidatController {
         User authUser = authenticationFacade.getAuthUser();
         return candidatService.findByBootcampCandidats(id, authUser);
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/candidats/{id}/process")
+    List<CandidatRes> getCandidatsByProcess(@PathVariable Long id){
+        User authUser = authenticationFacade.getAuthUser();
+        return candidatService.findByProcessCandidats(id, authUser);
+    }
 }

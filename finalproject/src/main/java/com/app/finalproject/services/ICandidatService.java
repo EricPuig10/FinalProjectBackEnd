@@ -10,4 +10,6 @@ public interface ICandidatService {
     List<CandidatRes> getAll(User auth);
 
     List<CandidatRes> findByBootcampCandidats(Long id, User authUser);
+
+    List<CandidatRes> findByProcessCandidats(Long id, User authUser);
 }
