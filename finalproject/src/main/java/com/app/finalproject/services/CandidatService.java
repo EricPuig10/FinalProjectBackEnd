@@ -13,6 +13,7 @@ import java.util.List;
 @Service
 public class CandidatService implements ICandidatService {
 
+
     private ICandidatRepository candidatRepository;
 
     public CandidatService(ICandidatRepository candidatRepository) {

@@ -18,6 +18,7 @@ import java.util.List;
 @CrossOrigin(origins="*")
 public class CandidatController {
 
+
     private ICandidatService candidatService;
     private IAuthenticationFacade authenticationFacade;
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CandidatMapper {
+
     public CandidatRes mapToRes(Candidat candidat, User auth){
         CandidatRes resCandidat = new CandidatRes();
         resCandidat.setAge(candidat.getAge());
