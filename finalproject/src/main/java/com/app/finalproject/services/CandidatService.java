@@ -46,6 +46,10 @@ public class CandidatService implements ICandidatService {
         return new CandidatMapper().mapMultipleMomentsToRes(candidatRepository.getCandidatsByProcessId(id), auth);
     }
 
+    @Override
+    public List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser) {
+        return new CandidatMapper().mapMultipleCandidatesToRes(candidatRepository.getCandidatsByBootcampId(id), authUser);
+    }
 
 
 
