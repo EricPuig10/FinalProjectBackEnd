@@ -1,7 +1,7 @@
 package com.app.finalproject.mappers;
 
+import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
-import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 
@@ -30,9 +30,24 @@ public class CandidatMapper {
         return  resCandidat;
     }
 
-    public List<CandidatRes> mapMultipleMomentsToRes(List<Candidat> candidats, User auth){
+    public List<CandidatRes> mapMultipleCandidatesToRes(List<Candidat> candidats, User auth){
         List<CandidatRes> res = new ArrayList<>();
         candidats.forEach(Candidat -> res.add(this.mapToRes(Candidat, auth)));
         return res;
+    }
+
+    public Candidat mapRequestToCandidatToEdit(CandidatReq candidatReq, Candidat candidat){
+        candidat.setName(candidatReq.getName());
+        candidat.setLastname(candidatReq.getLastname());
+        candidat.setSecondlastname(candidatReq.getSecondlastname());
+        candidat.setEmail(candidatReq.getEmail());
+        candidat.setBootcamp(candidatReq.getBootcamp());
+        candidat.setProcessState(candidatReq.getProcessState());
+        candidat.setPhone(candidatReq.getPhone());
+        candidat.setAge(candidatReq.getAge());
+        candidat.setNationality(candidatReq.getNationality());
+        candidat.setLaboralsituation(candidatReq.getLaboralsituation());
+        candidat.setGender(candidatReq.getGender());
+        return candidat;
     }
 }
