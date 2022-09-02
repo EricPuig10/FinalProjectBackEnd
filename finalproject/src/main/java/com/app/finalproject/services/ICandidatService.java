@@ -1,5 +1,4 @@
 package com.app.finalproject.services;
-
 import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.models.Candidat;
@@ -23,4 +22,5 @@ public interface ICandidatService {
 
     CandidatRes deleteCandidat(Long id, User authUser);
 
+    List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser);
 }

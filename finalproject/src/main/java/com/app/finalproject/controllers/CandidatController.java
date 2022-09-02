@@ -51,6 +51,7 @@ public class CandidatController {
         return candidatService.findByProcessCandidats(id, authUser);
     }
 
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/candidats/{id}")
     CandidatRes getCandidatById(@PathVariable Long id){
@@ -83,6 +84,11 @@ public class CandidatController {
     }
 
 
-
-
+    // Option to get all candidates from one bootamp
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/bootcamps/{id}/candidats")
+    List<CandidatRes> getBootcampCandidates(@PathVariable Long id) {
+        User authUser = authenticationFacade.getAuthUser();
+        return candidatService.findCandidatesByBootcampId(id, authUser);
+    }
 }

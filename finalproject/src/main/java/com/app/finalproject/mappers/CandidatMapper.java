@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CandidatMapper {
 
-    public CandidatRes mapToRes(Candidat candidat, User auth){
+    public CandidatRes mapToRes(Candidat candidat, User auth) {
         CandidatRes resCandidat = new CandidatRes();
         resCandidat.setAge(candidat.getAge());
         resCandidat.setEmail(candidat.getEmail());
@@ -27,16 +27,16 @@ public class CandidatMapper {
         resCandidat.setAssistedtoinformativesession(candidat.isAssistedtoinformativesession());
         resCandidat.setBootcamp(candidat.getBootcamp());
         resCandidat.setProcessState(candidat.getProcessState());
-        return  resCandidat;
+        return resCandidat;
     }
 
-    public List<CandidatRes> mapMultipleCandidatesToRes(List<Candidat> candidats, User auth){
+    public List<CandidatRes> mapMultipleCandidatesToRes(List<Candidat> candidats, User auth) {
         List<CandidatRes> res = new ArrayList<>();
         candidats.forEach(Candidat -> res.add(this.mapToRes(Candidat, auth)));
         return res;
     }
 
-    public Candidat mapRequestToCandidatToEdit(CandidatReq candidatReq, Candidat candidat){
+    public Candidat mapRequestToCandidatToEdit(CandidatReq candidatReq, Candidat candidat) {
         candidat.setName(candidatReq.getName());
         candidat.setLastname(candidatReq.getLastname());
         candidat.setSecondlastname(candidatReq.getSecondlastname());
@@ -49,5 +49,7 @@ public class CandidatMapper {
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
         candidat.setGender(candidatReq.getGender());
         return candidat;
+
     }
+
 }
