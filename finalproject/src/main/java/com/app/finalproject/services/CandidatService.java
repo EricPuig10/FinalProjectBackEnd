@@ -1,6 +1,7 @@
 package com.app.finalproject.services;
 
 import com.app.finalproject.dtos.candidats.CandidatRes;
+import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.CandidatMapper;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CandidatService implements ICandidatService {
@@ -43,6 +45,7 @@ public class CandidatService implements ICandidatService {
 
         return new CandidatMapper().mapMultipleMomentsToRes(candidatRepository.getCandidatsByProcessId(id), auth);
     }
+
 
 
 
