@@ -1,11 +1,14 @@
 package com.app.finalproject.fakers;
 
+import com.app.finalproject.dtos.bootcamp.BootcampJasonRequest;
 import com.app.finalproject.dtos.candidats.JsonRequest;
 import com.app.finalproject.models.ProcessState;
 import com.app.finalproject.repositories.*;
+import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.Candidat;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -42,27 +45,10 @@ public class SeedDataService {
 
     @PostConstruct
     public void addData(){
-        this.createBootcamp();
-        this.createBootcamp2();
         this.createProcessState();
         this.createProcessState2();
-        this.createMultipleCandidates();
-    }
-
-
-
-    public Bootcamp createBootcamp (){
-        var bootcamp = new Bootcamp();
-        bootcamp.setBootcampName("Osona");
-        bootcampRepository.save(bootcamp);
-        return bootcamp;
-    }
-
-    public Bootcamp createBootcamp2 (){
-        var bootcamp = new Bootcamp();
-        bootcamp.setBootcampName("Femtech");
-        bootcampRepository.save(bootcamp);
-        return bootcamp;
+        this.createMultipleCandidats();
+        this.createMultipleBootcamps();
     }
 
     public ProcessState createProcessState (){
@@ -100,8 +86,7 @@ public class SeedDataService {
         return candidat;
     }
 
-
-    public void createMultipleCandidates(){
+    public void createMultipleCandidats(){
         List<Candidat> candidats = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
         TypeReference<List<JsonRequest>> typeReference = new TypeReference<List<JsonRequest>>(){};
@@ -116,6 +101,30 @@ public class SeedDataService {
         }
     }
 
+    public Bootcamp createBootcamp(String bootcampName, String type, String duration, String characteristics, boolean isPresential) {
+        var bootcamp = new Bootcamp();
+
+        bootcamp.setBootcampName(bootcampName);
+        bootcamp.setType(type);
+        bootcamp.setDuration(duration);
+        bootcamp.setCharacteristics(characteristics);
+        bootcamp.setPresential(isPresential);
+
+        return bootcamp;
+    }
+
+    public void createMultipleBootcamps(){
+        List<Bootcamp> bootcamps = new ArrayList<>();
+        ObjectMapper mapper = new ObjectMapper();
+        TypeReference<List<BootcampJasonRequest>> typeReference = new TypeReference<List<BootcampJasonRequest>>() {};
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/bootcamps.json");
+        try{
+            List<BootcampJasonRequest> bootcampReq = mapper.readValue(inputStream, typeReference);
+            bootcampReq.forEach(req -> bootcamps.add(this.createBootcamp(req.getBootcampName(), req.getType(), req.getDuration(), req.getCharacteristics(), req.isPresential())));
+            bootcampRepository.saveAll(bootcamps);
+        }catch (IOException | NoSuchElementException e) {}
+
+    }
 
 
 

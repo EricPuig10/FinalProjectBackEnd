@@ -24,17 +24,24 @@ public class Bootcamp {
 
 
     private String bootcampName;
+    private String type;
+    private String duration;
+    private String characteristics;
 
-    private boolean isPresencial;
+    private boolean isPresential;
 
 
     @OneToMany(mappedBy = "bootcamp")
     @JsonIgnore
     private List<Candidat> candidatsList = new ArrayList<>();
 
-    public Bootcamp(Long id, String bootcampName, boolean isPresencial) {
+    public Bootcamp(Long id, String bootcampName, String type, String duration, String characteristics, boolean isPresential) {
         this.id = id;
         this.bootcampName = bootcampName;
-        this.isPresencial = isPresencial;
+        this.type = type;
+        this.duration = duration;
+        this.characteristics = characteristics;
+        this.isPresential = isPresential;
     }
+
 }

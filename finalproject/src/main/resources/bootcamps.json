@@ -1,0 +1,23 @@
+[
+  {
+    "bootcampName": "Osona",
+    "type": "Full Stack",
+    "duration": "850h",
+    "characteristics": "From Osona",
+    "presential": false
+  },
+  {
+    "bootcampName": "FemTech",
+    "type": "Full Stack",
+    "duration": "850h",
+    "characteristics": "Women camp",
+    "presential": false
+  },
+  {
+    "bootcampName": "LaCiba",
+    "type": "Front End",
+    "duration": "300h",
+    "characteristics": "Women camp",
+    "presential": true
+  }
+]
