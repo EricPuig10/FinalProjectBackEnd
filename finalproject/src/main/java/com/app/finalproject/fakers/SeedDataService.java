@@ -47,8 +47,9 @@ public class SeedDataService {
     public void addData(){
         this.createProcessState();
         this.createProcessState2();
-        this.createMultipleCandidats();
         this.createMultipleBootcamps();
+        this.createMultipleCandidats();
+
     }
 
     public ProcessState createProcessState (){
@@ -63,42 +64,6 @@ public class SeedDataService {
         process.setName("Second process");
         processStateRepository.save(process);
         return  process;
-    }
-
-    public Candidat createCandidat(Long age, String email, boolean assist, String bootcampName, String gender, String code, String name, String lastname, String secondlastname, String laboral, String nation, Long phone, String solo , String processState){
-        var candidat = new Candidat();
-
-        candidat.setAge(age);
-        candidat.setEmail(email);
-        candidat.setAssistedtoinformativesession(assist);
-        candidat.setBootcamp(bootcampRepository.findByBootcampName(bootcampName).get());
-        candidat.setGender(gender);
-        candidat.setCodeacademyprogress(code);
-        candidat.setName(name);
-        candidat.setLastname(lastname);
-        candidat.setSecondlastname(secondlastname);
-        candidat.setLaboralsituation(laboral);
-        candidat.setNationality(nation);
-        candidat.setPhone(phone);
-        candidat.setSololearnprogress(solo);
-        candidat.setProcessState(processStateRepository.findByName(processState).get());
-
-        return candidat;
-    }
-
-    public void createMultipleCandidats(){
-        List<Candidat> candidats = new ArrayList<>();
-        ObjectMapper mapper = new ObjectMapper();
-        TypeReference<List<JsonRequest>> typeReference = new TypeReference<List<JsonRequest>>(){};
-        InputStream inputStream = TypeReference.class.getResourceAsStream("/candidats.json");
-        try{
-            List<JsonRequest> candidatReq = mapper.readValue(inputStream, typeReference);
-            candidatReq.forEach(req -> candidats.add(this.createCandidat(req.getAge(), req.getEmail(), req.isAssistedtoinformativesession(), req.getBootcampName(), req.getGender(), req.getCodeacademyprogress(), req.getName(), req.getLastname(), req.getSecondlastname(),  req.getLaboralsituation(), req.getNationality(), req.getPhone(), req.getSololearnprogress() , req.getProcessState() )));
-            candidatRepository.saveAll(candidats);
-            System.out.println("Candidats saved!");
-        }catch (IOException | NoSuchElementException e){
-            System.out.println("Unable to save candidats: "+ e.getMessage());
-        }
     }
 
     public Bootcamp createBootcamp(String bootcampName, String type, String duration, String characteristics, boolean isPresential) {
@@ -125,6 +90,79 @@ public class SeedDataService {
         }catch (IOException | NoSuchElementException e) {}
 
     }
+
+
+    public Candidat createCandidat(
+            String name,
+            String lastname,
+            String secondlastname,
+            String email,
+            Long phone,
+            Long age,
+            String gender,
+            String nation,
+            String laboral,
+            String solo ,
+            String code,
+            boolean assist,
+            String bootcampName,
+            String processState){
+
+        System.out.println("Hola");
+
+        var candidat = new Candidat();
+
+        candidat.setName(name);
+        candidat.setLastname(lastname);
+        candidat.setSecondlastname(secondlastname);
+        candidat.setEmail(email);
+        candidat.setPhone(phone);
+        candidat.setAge(age);
+        candidat.setGender(gender);
+        candidat.setNationality(nation);
+        candidat.setLaboralsituation(laboral);
+        candidat.setSololearnprogress(solo);
+        candidat.setCodeacademyprogress(code);
+        candidat.setAssistedtoinformativesession(assist);
+        System.out.println(bootcampRepository.findByBootcampName(bootcampName).get());
+        candidat.setBootcamp(bootcampRepository.findByBootcampName(bootcampName).get());
+        candidat.setProcessState(processStateRepository.findByName(processState).get());
+
+        System.out.println(candidat.getName());
+        return candidat;
+    }
+
+    public void createMultipleCandidats(){
+        List<Candidat> candidats = new ArrayList<>();
+        ObjectMapper mapper = new ObjectMapper();
+        TypeReference<List<JsonRequest>> typeReference = new TypeReference<List<JsonRequest>>(){};
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/candidats.json");
+        try{
+            List<JsonRequest> candidatReq = mapper.readValue(inputStream, typeReference);
+            candidatReq.forEach(req -> candidats.add(this.createCandidat(
+                    req.getName(),
+                    req.getLastname(),
+                    req.getSecondlastname(),
+                    req.getEmail(),
+                    req.getPhone(),
+                    req.getAge(),
+                    req.getGender(),
+                    req.getNationality(),
+                    req.getLaboralsituation(),
+                    req.getSololearnprogress(),
+                    req.getCodeacademyprogress(),
+                    req.isAssistedtoinformativesession(),
+                    req.getBootcampName(),
+                    req.getProcessState()
+            )));
+            candidatRepository.saveAll(candidats);
+            System.out.println("Candidats saved!");
+        }catch (IOException | NoSuchElementException e){
+            System.out.println("Unable to save candidats: "+ e.getMessage());
+        }
+    }
+
+
 
 
 

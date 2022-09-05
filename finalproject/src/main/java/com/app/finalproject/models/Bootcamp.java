@@ -27,7 +27,6 @@ public class Bootcamp {
     private String type;
     private String duration;
     private String characteristics;
-
     private boolean isPresential;
 
 
