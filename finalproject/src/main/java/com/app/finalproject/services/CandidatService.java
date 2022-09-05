@@ -2,6 +2,7 @@ package com.app.finalproject.services;
 
 import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
+import com.app.finalproject.dtos.candidats.CandidatResToDataTable;
 import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.CandidatMapper;
 import com.app.finalproject.models.Candidat;
@@ -24,11 +25,11 @@ public class CandidatService implements ICandidatService {
     }
 
     @Override
-    public List<CandidatRes> getAll(User auth) {
+    public List<CandidatResToDataTable> getAll(User auth) {
         List <Candidat> candidats = candidatRepository.findAll();
-        List <CandidatRes> candidatsList = new ArrayList<>();
+        List <CandidatResToDataTable> candidatsList = new ArrayList<>();
         candidats.forEach(Candidat -> {
-            CandidatRes candidat = new CandidatMapper().mapToRes(Candidat, auth);
+            CandidatResToDataTable candidat = new CandidatMapper().mapToResData(Candidat, auth);
             candidatsList.add(candidat);
         });
         return candidatsList;

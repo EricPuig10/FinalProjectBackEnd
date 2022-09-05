@@ -4,6 +4,7 @@ package com.app.finalproject.controllers;
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
 import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
+import com.app.finalproject.dtos.candidats.CandidatResToDataTable;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 import com.app.finalproject.services.ICandidatService;
@@ -31,7 +32,7 @@ public class CandidatController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/candidats")
-    List<CandidatRes> getAll(){
+    List<CandidatResToDataTable> getAll(){
         User auth = authenticationFacade.getAuthUser();
         return candidatService.getAll(auth);
     }
