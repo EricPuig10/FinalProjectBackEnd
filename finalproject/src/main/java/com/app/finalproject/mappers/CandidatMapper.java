@@ -1,6 +1,7 @@
 package com.app.finalproject.mappers;
 
 import com.app.finalproject.dtos.candidats.CandidatReq;
+import com.app.finalproject.dtos.candidats.CandidatReqToEdit;
 import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.dtos.candidats.CandidatResToDataTable;
 import com.app.finalproject.models.Candidat;
@@ -72,5 +73,7 @@ public class CandidatMapper {
         return candidat;
 
     }
+
+
 
 }
