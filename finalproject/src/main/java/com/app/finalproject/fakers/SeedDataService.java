@@ -108,7 +108,6 @@ public class SeedDataService {
             String bootcampName,
             String processState){
 
-        System.out.println("Hola");
 
         var candidat = new Candidat();
 
@@ -128,7 +127,6 @@ public class SeedDataService {
         candidat.setBootcamp(bootcampRepository.findByBootcampName(bootcampName).get());
         candidat.setProcessState(processStateRepository.findByName(processState).get());
 
-        System.out.println(candidat.getName());
         return candidat;
     }
 
