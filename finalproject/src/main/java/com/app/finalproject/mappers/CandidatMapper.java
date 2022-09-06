@@ -1,9 +1,7 @@
 package com.app.finalproject.mappers;
 
 import com.app.finalproject.dtos.candidats.CandidatReq;
-import com.app.finalproject.dtos.candidats.CandidatReqToEdit;
 import com.app.finalproject.dtos.candidats.CandidatRes;
-import com.app.finalproject.dtos.candidats.CandidatResToDataTable;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 
@@ -32,25 +30,6 @@ public class CandidatMapper {
         return resCandidat;
     }
 
-    public CandidatResToDataTable mapToResData(Candidat candidat, User auth) {
-        CandidatResToDataTable resCandidat = new CandidatResToDataTable();
-        resCandidat.setAge(candidat.getAge());
-        resCandidat.setEmail(candidat.getEmail());
-        resCandidat.setGender(candidat.getGender());
-        resCandidat.setLaboralsituation(candidat.getLaboralsituation());
-        //resCandidat.setCodeacademyprogress(candidat.getCodeacademyprogress());
-        resCandidat.setName(candidat.getName());
-        resCandidat.setLastname(candidat.getLastname());
-        resCandidat.setSecondlastname(candidat.getSecondlastname());
-        resCandidat.setNationality(candidat.getNationality());
-        resCandidat.setPhone(candidat.getPhone());
-        resCandidat.setId(candidat.getId());
-        //resCandidat.setSololearnprogress(candidat.getSololearnprogress());
-        //resCandidat.setAssistedtoinformativesession(candidat.isAssistedtoinformativesession());
-        resCandidat.setBootcamp(candidat.getBootcamp().getBootcampName());
-        resCandidat.setProcessState(candidat.getProcessState().getName());
-        return resCandidat;
-    }
 
     public List<CandidatRes> mapMultipleCandidatsToRes(List<Candidat> candidats, User auth) {
         List<CandidatRes> res = new ArrayList<>();
