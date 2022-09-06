@@ -10,13 +10,18 @@ import java.util.List;
 
 public class BootcampMapper {
 
+
     public BootcampResDto mapBootcampToBootcampResponseDto(Bootcamp bootcamp, User auth){
         var response = new BootcampResDto();
         response.setId(bootcamp.getId());
         response.setBootcampName(bootcamp.getBootcampName());
-        response.setPresential(bootcamp.isPresencial());
+        response.setType(bootcamp.getType());
+        response.setDuration(bootcamp.getDuration());
+        response.setCharacteristics(bootcamp.getCharacteristics());
+        response.setPresential(bootcamp.isPresential());
         return response;
     }
+
 
 
     public List<BootcampResDto> mapMultipleBootcampToListResponse(List<Bootcamp> bootcampList, User auth){

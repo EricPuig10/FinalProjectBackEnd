@@ -39,13 +39,13 @@ public class CandidatService implements ICandidatService {
     @Override
     public List<CandidatRes> findByBootcampCandidats(Long id, User auth) {
 
-        return new CandidatMapper().mapMultipleCandidatesToRes(candidatRepository.getCandidatsByBootcampId(id), auth);
+        return new CandidatMapper().mapMultipleCandidatsToRes(candidatRepository.getCandidatsByBootcampId(id), auth);
     }
 
     @Override
     public List<CandidatRes> findByProcessCandidats(Long id, User auth) {
 
-        return new CandidatMapper().mapMultipleCandidatesToRes(candidatRepository.getCandidatsByProcessId(id), auth);
+        return new CandidatMapper().mapMultipleCandidatsToRes(candidatRepository.getCandidatsByProcessId(id), auth);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class CandidatService implements ICandidatService {
     }
     @Override
     public List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser) {
-        return new CandidatMapper().mapMultipleCandidatesToRes(candidatRepository.getCandidatsByBootcampId(id), authUser);
+        return new CandidatMapper().mapMultipleCandidatsToRes(candidatRepository.getCandidatsByBootcampId(id), authUser);
     }
 
 

@@ -44,6 +44,4 @@ public class Candidat {
     @JoinColumn(name = "bootcamp_id")
     private Bootcamp bootcamp;
 
-
-
 }
