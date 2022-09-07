@@ -1,6 +1,7 @@
 package com.app.finalproject.auth.controller;
 import com.app.finalproject.auth.configuration.JwtUtils;
 import com.app.finalproject.auth.configuration.UserDetailsImplementation;
+import com.app.finalproject.auth.pattern.ValidateEmail;
 import com.app.finalproject.models.Role;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.AuthRepository;
@@ -18,6 +19,8 @@ import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @RestController
@@ -81,6 +84,21 @@ public class AuthenticationController {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Email is already in use!"));
+        }
+
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "factoriaf5.org");
+
+        // El email a validar
+        String email = signUpRequest.getEmail();
+
+        Matcher mather = pattern.matcher(email);
+
+        if(!mather.find()) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Email format wrong!"));
         }
 
         // Create new user's account

@@ -44,7 +44,7 @@ public class CandidatMapper {
         candidat.setLastname(candidatReq.getLastname());
         candidat.setSecondlastname(candidatReq.getSecondlastname());
         candidat.setEmail(candidatReq.getEmail());
-        candidat.setBootcamp(candidatReq.getBootcamp());
+        candidat.getBootcamp().setBootcampName(candidatReq.getBootcamp().getBootcampName());
         candidat.setProcessState(candidatReq.getProcessState());
         candidat.setPhone(candidatReq.getPhone());
         candidat.setAge(candidatReq.getAge());
