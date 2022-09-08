@@ -2,11 +2,15 @@ package com.app.finalproject.services;
 
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
+import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.BootcampMapper;
+import com.app.finalproject.models.Bootcamp;
+import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BootcampService implements IBootcampService {
@@ -25,5 +29,13 @@ public class BootcampService implements IBootcampService {
     public List<BootcampResDto> getAll() {
         var authUser = authenticationFacade.getAuthUser();
         return new BootcampMapper().mapMultipleBootcampToListResponse(bootcampRepository.findAll(), authUser);
+    }
+
+    @Override
+    public BootcampResDto findById(Long id, User auth) {
+        Optional<Bootcamp> foundBootcamp = bootcampRepository.findById(id);
+        if(foundBootcamp.isEmpty()) throw new NotFoundException("Bootcamp Not Found", "B-404");
+        BootcampResDto bootcampResDto = new BootcampMapper().mapBootcampToBootcampResponseDto(foundBootcamp.get(), auth);
+        return bootcampResDto;
     }
 }
