@@ -1,5 +1,6 @@
 package com.app.finalproject.mappers;
 
+import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.User;
@@ -31,6 +32,13 @@ public class BootcampMapper {
     }
 
 
-
+    public Bootcamp mapRequestToBootcampToEdit(BootcampReqDto bootcampReqDto,Bootcamp bootcamp){
+        bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
+        bootcamp.setType(bootcampReqDto.getType());
+        bootcamp.setDuration(bootcampReqDto.getDuration());
+        bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
+        bootcamp.setPresential(bootcampReqDto.isPresential());
+        return bootcamp;
+    }
 
 }

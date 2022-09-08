@@ -3,6 +3,7 @@ package com.app.finalproject.services;
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
+import com.app.finalproject.exceptions.BadRequestException;
 import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.BootcampMapper;
 import com.app.finalproject.models.Bootcamp;
@@ -35,7 +36,7 @@ public class BootcampService implements IBootcampService {
     @Override
     public BootcampResDto findById(Long id, User auth) {
         Optional<Bootcamp> foundBootcamp = bootcampRepository.findById(id);
-        if(foundBootcamp.isEmpty()) throw new NotFoundException("Bootcamp Not Found", "B-404");
+        if (foundBootcamp.isEmpty()) throw new NotFoundException("Bootcamp Not Found", "B-404");
         BootcampResDto bootcampResDto = new BootcampMapper().mapBootcampToBootcampResponseDto(foundBootcamp.get(), auth);
         return bootcampResDto;
     }
@@ -51,4 +52,26 @@ public class BootcampService implements IBootcampService {
 
         return bootcampRepository.save(bootcamp);
     }
+
+    @Override
+    public BootcampResDto updateBootcamp(BootcampReqDto bootcampReqDto, Long id, User authUser) {
+        var bootcamp = bootcampRepository.findById(id);
+        if(bootcamp.isEmpty()) throw new NotFoundException("Bootcamp Not Found", "B-404");
+        Bootcamp updatedBootcamp = new BootcampMapper().mapRequestToBootcampToEdit(bootcampReqDto, bootcamp.get());
+        bootcampRepository.save(updatedBootcamp);
+        BootcampResDto bootcampResDto = new BootcampMapper().mapBootcampToBootcampResponseDto(updatedBootcamp,authUser);
+        return bootcampResDto;
+    }
+
+    @Override
+    public BootcampResDto deleteBootcamp(Long id, User auth){
+        Bootcamp bootcamp = this.bootcampRepository.findById(id).get();
+        BootcampResDto BootcampRes = new BootcampMapper().mapBootcampToBootcampResponseDto(bootcamp, auth);
+        this.bootcampRepository.delete(bootcamp);
+        return BootcampRes;
+    }
+
+
+
+
 }

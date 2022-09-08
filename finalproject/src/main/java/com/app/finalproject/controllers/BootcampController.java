@@ -51,6 +51,21 @@ public class BootcampController {
 
 
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/bootcamps/{id}")
+    ResponseEntity<BootcampResDto> deleteBootcamp(@PathVariable Long id){
+        User authUser = authenticationFacade.getAuthUser();
+        var bootcamp = bootcampService.deleteBootcamp(id, authUser);
+        return new ResponseEntity<>(bootcamp, HttpStatus.OK);
+    }
+
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/bootcamps/{id}")
+    BootcampResDto updateBootcamp(@PathVariable Long id, @RequestBody BootcampReqDto bootcampReqDto){
+        User authUser = authenticationFacade.getAuthUser();
+        return bootcampService.updateBootcamp(bootcampReqDto, id, authUser);
+    }
 
 
 
