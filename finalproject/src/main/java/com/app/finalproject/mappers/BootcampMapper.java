@@ -41,4 +41,14 @@ public class BootcampMapper {
         return bootcamp;
     }
 
+
+    public Bootcamp mapRequestToBootcampToCreate(BootcampReqDto bootcampReqDto){
+        var bootcamp = new Bootcamp();
+        bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
+        bootcamp.setType(bootcamp.getType());
+        bootcamp.setDuration(bootcampReqDto.getDuration());
+        bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
+        bootcamp.setPresential(bootcampReqDto.isPresential());
+        return bootcamp;
+    }
 }

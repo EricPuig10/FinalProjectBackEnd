@@ -43,14 +43,8 @@ public class BootcampService implements IBootcampService {
 
     @Override
     public Bootcamp createBootcamp(BootcampReqDto bootcampReqDto, User authUser) {
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
-        bootcamp.setType(bootcamp.getType());
-        bootcamp.setDuration(bootcampReqDto.getDuration());
-        bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
-        bootcamp.setPresential(bootcampReqDto.isPresential());
-
-        return bootcampRepository.save(bootcamp);
+        Bootcamp createdBootcamp = new BootcampMapper().mapRequestToBootcampToCreate(bootcampReqDto);
+        return bootcampRepository.save(createdBootcamp);
     }
 
     @Override
