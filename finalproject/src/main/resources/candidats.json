@@ -46,4 +46,21 @@
     "assistedtoinformativesession": true,
     "bootcampName": "FemTech",
     "processState": "Second process"
+  },
+  {
+    "name": "Laura",
+    "lastname": "Castillo",
+    "secondlastname": "Duarte",
+    "email": "laura@gmail.com",
+    "phone": 123456789,
+    "age": 35,
+    "gender": "Female",
+    "nationality": "Catalonia",
+    "laboralsituation": "Unemployed",
+    "sololearnprogress": "solo",
+    "codeacademyprogress": "code",
+    "assistedtoinformativesession": true,
+    "bootcampName": "Osona",
+    "processState": "Second process"
+
   }]
