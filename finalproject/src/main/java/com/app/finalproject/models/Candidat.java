@@ -40,6 +40,7 @@ public class Candidat {
     private ProcessState processState;
 
 
+
     @ManyToOne
     @JoinColumn(name = "bootcamp_id")
     private Bootcamp bootcamp;

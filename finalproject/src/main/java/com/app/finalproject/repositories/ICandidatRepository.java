@@ -17,6 +17,8 @@ public interface ICandidatRepository extends JpaRepository<Candidat, Long> {
     @Query("select c from Candidat c where c.processState.id = :id")
     List<Candidat> getCandidatsByProcessId(@Param("id") Long id);
 
+    
+
 
 
 }

@@ -6,7 +6,9 @@ import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.CandidatMapper;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
+import com.app.finalproject.repositories.IBootcampRepository;
 import com.app.finalproject.repositories.ICandidatRepository;
+import com.app.finalproject.repositories.IProcessStateRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,9 +20,14 @@ public class CandidatService implements ICandidatService {
 
 
     private ICandidatRepository candidatRepository;
+    private IBootcampRepository bootcampRepository;
 
-    public CandidatService(ICandidatRepository candidatRepository) {
+    private IProcessStateRepository processStateRepository;
+
+    public CandidatService(ICandidatRepository candidatRepository, IBootcampRepository bootcampRepository, IProcessStateRepository processStateRepository) {
         this.candidatRepository = candidatRepository;
+        this.bootcampRepository = bootcampRepository;
+        this.processStateRepository = processStateRepository;
     }
 
     @Override
@@ -63,33 +70,32 @@ public class CandidatService implements ICandidatService {
 
     @Override
     public Candidat create(CandidatReq candidatReq, User auth) {
-        Candidat candidat = new Candidat();
-        candidat.setName(candidatReq.getName());
-        candidat.setLastname(candidatReq.getLastname());
-        candidat.setSecondlastname(candidatReq.getSecondlastname());
-        candidat.setEmail(candidatReq.getEmail());
-        candidat.setBootcamp(candidatReq.getBootcamp());
-        candidat.setProcessState(candidatReq.getProcessState());
-        candidat.setPhone(candidatReq.getPhone());
-        candidat.setAge(candidatReq.getAge());
-        candidat.setNationality(candidatReq.getNationality());
-        candidat.setLaboralsituation(candidatReq.getLaboralsituation());
-        candidat.setGender(candidatReq.getGender());
 
-        return candidatRepository.save(candidat);
+        var bootcamp = bootcampRepository.findByBootcampName(candidatReq.getBootcamp());
+        var process = processStateRepository.findByName(candidatReq.getProcessState());
+
+        Candidat createdCandidat = new CandidatMapper().mapRequestToCandidatToCreate(candidatReq, bootcamp.get(), process.get());
+
+        return candidatRepository.save(createdCandidat);
     }
 
     @Override
     public CandidatRes updateACandidat(CandidatReq candidatReq, Long id, User auth){
 
         var candidat = candidatRepository.findById(id);
+        var bootcamp = bootcampRepository.findByBootcampName(candidatReq.getBootcamp());
+        var process = processStateRepository.findByName(candidatReq.getProcessState());
 
         if(candidat.isEmpty()) throw new NotFoundException("Candidat Not Found", "M-404");
 
-        Candidat updatedCandidat = new CandidatMapper().mapRequestToCandidatToEdit(candidatReq, candidat.get());
+        Candidat updatedCandidat = new CandidatMapper().mapRequestToCandidatToEdit(candidatReq, candidat.get(), bootcamp.get(), process.get());
         candidatRepository.save(updatedCandidat);
         CandidatRes candidatRes = new CandidatMapper().mapToRes(updatedCandidat, auth);
+
+
         return candidatRes;
+
+
     }
 
     @Override

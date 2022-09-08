@@ -6,7 +6,9 @@ import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.ProcessState;
 import com.app.finalproject.models.User;
+import com.app.finalproject.repositories.IBootcampRepository;
 import com.app.finalproject.repositories.ICandidatRepository;
+import com.app.finalproject.repositories.IProcessStateRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -23,6 +25,8 @@ class CandidatServiceTest {
 
     @Mock
     ICandidatRepository candidatRepository;
+    IBootcampRepository bootcampRepository;
+    IProcessStateRepository processStateRepository;
 
 
     public Candidat createCandidat(){
@@ -41,7 +45,7 @@ class CandidatServiceTest {
 
     @Test
     void getAllReturnsListOfCandidatsRes() {
-        var candidatService = new CandidatService(candidatRepository);
+        var candidatService = new CandidatService(candidatRepository, bootcampRepository, processStateRepository);
         var bootcamp = new Bootcamp();
         bootcamp.setId(1L);
         var user = new User();
@@ -57,7 +61,7 @@ class CandidatServiceTest {
 
     @Test
     void findByBootcampCandidatsReturnsAListOfCandidatsRes() {
-        var candidatService = new CandidatService(candidatRepository);
+        var candidatService = new CandidatService(candidatRepository, bootcampRepository, processStateRepository);
         Candidat candidat = this.createCandidat();
         var user = new User();
         user.setId(1L);
@@ -72,7 +76,7 @@ class CandidatServiceTest {
     @Test
     void findByProcessCandidatsReturnsAListOfCandidatsRes() {
 
-        var candidatService = new CandidatService(candidatRepository);
+        var candidatService = new CandidatService(candidatRepository, bootcampRepository, processStateRepository);
         Candidat candidat = this.createCandidat();
         var user = new User();
         user.setId(1L);
