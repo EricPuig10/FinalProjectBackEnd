@@ -1,13 +1,12 @@
 package com.app.finalproject.dtos.candidats;
 
-
+import com.app.finalproject.dtos.bootcamp.BootcampResDtoCandidat;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.ProcessState;
 import lombok.Data;
 
 @Data
-public class CandidatRes {
-
+public class CandidatResWithBootcampDto {
     private Long id;
     private String name;
     private String lastname;
@@ -18,11 +17,6 @@ public class CandidatRes {
     private String gender;
     private String nationality;
     private String laboralsituation;
-    private String sololearnprogress;
-    private String codeacademyprogress;
-    private boolean assistedtoinformativesession;
-    private Bootcamp bootcamp;
-    private ProcessState processState;
-
-
+    private BootcampResDtoCandidat bootcamp;
+    //private ProcessState processState;
 }

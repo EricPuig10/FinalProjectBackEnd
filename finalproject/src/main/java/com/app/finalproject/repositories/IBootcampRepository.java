@@ -12,4 +12,6 @@ public interface IBootcampRepository extends JpaRepository <Bootcamp, Long> {
 
     Optional<Bootcamp> findByBootcampName(String bootcampName);
 
+
+
 }

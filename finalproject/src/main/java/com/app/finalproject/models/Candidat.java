@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -40,10 +42,10 @@ public class Candidat {
     private ProcessState processState;
 
 
+
     @ManyToOne
     @JoinColumn(name = "bootcamp_id")
+//    @OnDelete( action = OnDeleteAction.CASCADE )
     private Bootcamp bootcamp;
-
-
 
 }
