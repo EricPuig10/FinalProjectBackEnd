@@ -4,7 +4,6 @@ import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.User;
-import org.springframework.boot.web.embedded.undertow.UndertowServletWebServer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class BootcampMapper {
         var response = new BootcampResDto();
         response.setId(bootcamp.getId());
         response.setBootcampName(bootcamp.getBootcampName());
-        response.setType(bootcamp.getType());
+        response.setCategory(bootcamp.getCategory());
         response.setDuration(bootcamp.getDuration());
         response.setCharacteristics(bootcamp.getCharacteristics());
         response.setPresential(bootcamp.isPresential());
@@ -34,7 +33,7 @@ public class BootcampMapper {
 
     public Bootcamp mapRequestToBootcampToEdit(BootcampReqDto bootcampReqDto,Bootcamp bootcamp){
         bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
-        bootcamp.setType(bootcampReqDto.getType());
+        bootcamp.setCategory(bootcampReqDto.getCategory());
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
         bootcamp.setPresential(bootcampReqDto.isPresential());
@@ -45,7 +44,7 @@ public class BootcampMapper {
     public Bootcamp mapRequestToBootcampToCreate(BootcampReqDto bootcampReqDto){
         var bootcamp = new Bootcamp();
         bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
-        bootcamp.setType(bootcamp.getType());
+        bootcamp.setCategory(bootcampReqDto.getCategory());
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
         bootcamp.setPresential(bootcampReqDto.isPresential());

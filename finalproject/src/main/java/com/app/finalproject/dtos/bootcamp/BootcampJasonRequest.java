@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 public class BootcampJasonRequest {
     private String bootcampName;
-    private String type;
+    private String category;
     private String duration;
     private String characteristics;
     private boolean isPresential;

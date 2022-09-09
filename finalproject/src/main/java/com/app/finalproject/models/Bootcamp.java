@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Bootcamp {
     private Long id;
 
     private String bootcampName;
-    private String type;
+    private String category;
     private String duration;
     private String characteristics;
     private boolean isPresential;
@@ -33,10 +34,10 @@ public class Bootcamp {
     @JsonIgnore
     private List<Candidat> candidatsList = new ArrayList<>();
 
-    public Bootcamp(Long id, String bootcampName, String type, String duration, String characteristics, boolean isPresential) {
+    public Bootcamp(Long id, String bootcampName, String category, String duration, String characteristics, boolean isPresential) {
         this.id = id;
         this.bootcampName = bootcampName;
-        this.type = type;
+        this.category = category;
         this.duration = duration;
         this.characteristics = characteristics;
         this.isPresential = isPresential;

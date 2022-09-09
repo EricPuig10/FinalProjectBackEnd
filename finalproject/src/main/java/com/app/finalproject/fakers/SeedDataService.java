@@ -4,11 +4,9 @@ import com.app.finalproject.dtos.bootcamp.BootcampJasonRequest;
 import com.app.finalproject.dtos.candidats.JsonRequest;
 import com.app.finalproject.models.ProcessState;
 import com.app.finalproject.repositories.*;
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.Candidat;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -70,7 +68,7 @@ public class SeedDataService {
         var bootcamp = new Bootcamp();
 
         bootcamp.setBootcampName(bootcampName);
-        bootcamp.setType(type);
+        bootcamp.setCategory(type);
         bootcamp.setDuration(duration);
         bootcamp.setCharacteristics(characteristics);
         bootcamp.setPresential(isPresential);
@@ -85,7 +83,7 @@ public class SeedDataService {
         InputStream inputStream = TypeReference.class.getResourceAsStream("/bootcamps.json");
         try{
             List<BootcampJasonRequest> bootcampReq = mapper.readValue(inputStream, typeReference);
-            bootcampReq.forEach(req -> bootcamps.add(this.createBootcamp(req.getBootcampName(), req.getType(), req.getDuration(), req.getCharacteristics(), req.isPresential())));
+            bootcampReq.forEach(req -> bootcamps.add(this.createBootcamp(req.getBootcampName(), req.getCategory(), req.getDuration(), req.getCharacteristics(), req.isPresential())));
             bootcampRepository.saveAll(bootcamps);
         }catch (IOException | NoSuchElementException e) {}
 
