@@ -2,6 +2,7 @@ package com.app.finalproject.fakers;
 
 import com.app.finalproject.dtos.bootcamp.BootcampJasonRequest;
 import com.app.finalproject.dtos.candidats.JsonRequest;
+import com.app.finalproject.models.Category;
 import com.app.finalproject.models.ProcessState;
 import com.app.finalproject.repositories.*;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -26,25 +27,31 @@ public class SeedDataService {
 
     private IProcessStateRepository processStateRepository;
 
+    private ICategoryRepository categoryRepository;
+
     private ICandidatRepository candidatRepository;
     private AuthRepository authRepository;
     private RoleRepository roleRepository;
     private PasswordEncoder encoder;
 
-    public SeedDataService(IBootcampRepository bootcampRepository, IProcessStateRepository processStateRepository, ICandidatRepository candidatRepository, AuthRepository authRepository, RoleRepository roleRepository, PasswordEncoder encoder) {
+    public SeedDataService(IBootcampRepository bootcampRepository, IProcessStateRepository processStateRepository, ICategoryRepository categoryRepository, ICandidatRepository candidatRepository, AuthRepository authRepository, RoleRepository roleRepository, PasswordEncoder encoder) {
         this.bootcampRepository = bootcampRepository;
         this.processStateRepository = processStateRepository;
+        this.categoryRepository = categoryRepository;
         this.candidatRepository = candidatRepository;
         this.authRepository = authRepository;
         this.roleRepository = roleRepository;
         this.encoder = encoder;
     }
 
-
     @PostConstruct
     public void addData(){
         this.createProcessState();
         this.createProcessState2();
+        this.createCategory("Full Stack");
+        this.createCategory("Front End");
+        this.createCategory("Back End");
+        this.createCategory("Blockchain");
         this.createMultipleBootcamps();
         this.createMultipleCandidats();
 
@@ -57,6 +64,15 @@ public class SeedDataService {
         return  process;
     }
 
+    public Category createCategory (String name){
+        var category = new Category();
+        category.setName(name);
+        categoryRepository.save(category);
+        return  category;
+    }
+
+
+
     public ProcessState createProcessState2 (){
         var process = new ProcessState();
         process.setName("Second process");
@@ -64,14 +80,15 @@ public class SeedDataService {
         return  process;
     }
 
-    public Bootcamp createBootcamp(String bootcampName, String type, String duration, String characteristics, boolean isPresential) {
+    public Bootcamp createBootcamp(String bootcampName, Category type, String duration, String characteristics, boolean isPresential) {
         var bootcamp = new Bootcamp();
 
         bootcamp.setBootcampName(bootcampName);
-        bootcamp.setCategory(type);
         bootcamp.setDuration(duration);
         bootcamp.setCharacteristics(characteristics);
         bootcamp.setPresential(isPresential);
+        bootcamp.setCategory(categoryRepository.findByName(type.getName()).get());
+
 
         return bootcamp;
     }
@@ -88,6 +105,12 @@ public class SeedDataService {
         }catch (IOException | NoSuchElementException e) {}
 
     }
+
+
+
+
+
+
 
 
     public Candidat createCandidat(

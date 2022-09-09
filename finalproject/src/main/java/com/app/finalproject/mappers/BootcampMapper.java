@@ -3,6 +3,7 @@ package com.app.finalproject.mappers;
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.models.Bootcamp;
+import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
 
 import java.util.ArrayList;
@@ -31,9 +32,9 @@ public class BootcampMapper {
     }
 
 
-    public Bootcamp mapRequestToBootcampToEdit(BootcampReqDto bootcampReqDto,Bootcamp bootcamp){
+    public Bootcamp mapRequestToBootcampToEdit(BootcampReqDto bootcampReqDto,Bootcamp bootcamp, Category category){
         bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
-        bootcamp.setCategory(bootcampReqDto.getCategory());
+        bootcamp.setCategory(category);
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
         bootcamp.setPresential(bootcampReqDto.isPresential());
@@ -41,10 +42,10 @@ public class BootcampMapper {
     }
 
 
-    public Bootcamp mapRequestToBootcampToCreate(BootcampReqDto bootcampReqDto){
+    public Bootcamp mapRequestToBootcampToCreate(BootcampReqDto bootcampReqDto, Category category){
         var bootcamp = new Bootcamp();
         bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
-        bootcamp.setCategory(bootcampReqDto.getCategory());
+        bootcamp.setCategory(category);
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
         bootcamp.setPresential(bootcampReqDto.isPresential());

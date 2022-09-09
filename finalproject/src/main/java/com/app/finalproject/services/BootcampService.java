@@ -9,6 +9,7 @@ import com.app.finalproject.mappers.BootcampMapper;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
+import com.app.finalproject.repositories.ICategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +23,12 @@ public class BootcampService implements IBootcampService {
 
     private IAuthenticationFacade authenticationFacade;
 
-    public BootcampService(IBootcampRepository bootcampRepository, IAuthenticationFacade authenticationFacade) {
+    private ICategoryRepository categoryRepository;
+
+    public BootcampService(IBootcampRepository bootcampRepository, IAuthenticationFacade authenticationFacade, ICategoryRepository categoryRepository) {
         this.bootcampRepository = bootcampRepository;
         this.authenticationFacade = authenticationFacade;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -43,15 +47,17 @@ public class BootcampService implements IBootcampService {
 
     @Override
     public Bootcamp createBootcamp(BootcampReqDto bootcampReqDto, User authUser) {
-        Bootcamp createdBootcamp = new BootcampMapper().mapRequestToBootcampToCreate(bootcampReqDto);
+        var category = categoryRepository.findByName(bootcampReqDto.getCategory());
+        Bootcamp createdBootcamp = new BootcampMapper().mapRequestToBootcampToCreate(bootcampReqDto, category.get());
         return bootcampRepository.save(createdBootcamp);
     }
 
     @Override
     public BootcampResDto updateBootcamp(BootcampReqDto bootcampReqDto, Long id, User authUser) {
         var bootcamp = bootcampRepository.findById(id);
+        var category = categoryRepository.findByName(bootcampReqDto.getCategory());
         if(bootcamp.isEmpty()) throw new NotFoundException("Bootcamp Not Found", "B-404");
-        Bootcamp updatedBootcamp = new BootcampMapper().mapRequestToBootcampToEdit(bootcampReqDto, bootcamp.get());
+        Bootcamp updatedBootcamp = new BootcampMapper().mapRequestToBootcampToEdit(bootcampReqDto, bootcamp.get(), category.get());
         bootcampRepository.save(updatedBootcamp);
         BootcampResDto bootcampResDto = new BootcampMapper().mapBootcampToBootcampResponseDto(updatedBootcamp,authUser);
         return bootcampResDto;

@@ -1,5 +1,6 @@
 package com.app.finalproject.dtos.bootcamp;
 
+import com.app.finalproject.models.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.Data;
 @Builder
 public class BootcampJasonRequest {
     private String bootcampName;
-    private String category;
+    private Category category;
     private String duration;
     private String characteristics;
     private boolean isPresential;

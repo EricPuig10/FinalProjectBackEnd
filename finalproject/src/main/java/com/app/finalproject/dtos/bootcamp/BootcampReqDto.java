@@ -1,6 +1,7 @@
 package com.app.finalproject.dtos.bootcamp;
 
 
+import com.app.finalproject.models.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
