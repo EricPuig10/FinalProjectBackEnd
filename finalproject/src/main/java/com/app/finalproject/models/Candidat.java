@@ -45,7 +45,7 @@ public class Candidat {
 
     @ManyToOne
     @JoinColumn(name = "bootcamp_id")
-//    @OnDelete( action = OnDeleteAction.CASCADE )
+    @OnDelete( action = OnDeleteAction.CASCADE )
     private Bootcamp bootcamp;
 
 }
