@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -117,6 +118,15 @@ public class SeedDataService {
             String email,
             Long phone,
             Long age,
+            String degree,
+            String date,
+            String superpower,
+            String direction,
+            String english,
+            String formation,
+            String reached,
+            String spirit,
+            String motivation,
             String gender,
             String nation,
             String laboral,
@@ -124,7 +134,7 @@ public class SeedDataService {
             String code,
             boolean assist,
             String bootcampName,
-            String processState){
+            String processState, String img){
 
 
         var candidat = new Candidat();
@@ -135,6 +145,15 @@ public class SeedDataService {
         candidat.setEmail(email);
         candidat.setPhone(phone);
         candidat.setAge(age);
+        candidat.setDegree(degree);
+        candidat.setDate(date);
+        candidat.setSuperpower(superpower);
+        candidat.setDirection(direction);
+        candidat.setEnglish(english);
+        candidat.setFormation(formation);
+        candidat.setReached(reached);
+        candidat.setSpirit(spirit);
+        candidat.setMotivation(motivation);
         candidat.setGender((gender));
         candidat.setNationality(nation);
         candidat.setLaboralsituation(laboral);
@@ -144,6 +163,7 @@ public class SeedDataService {
         System.out.println(bootcampRepository.findByBootcampName(bootcampName).get());
         candidat.setBootcamp(bootcampRepository.findByBootcampName(bootcampName).get());
         candidat.setProcessState(processStateRepository.findByName(processState).get());
+        candidat.setImg(img);
 
         return candidat;
     }
@@ -162,6 +182,15 @@ public class SeedDataService {
                     req.getEmail(),
                     req.getPhone(),
                     req.getAge(),
+                    req.getDegree(),
+                    req.getDate(),
+                    req.getSuperpower(),
+                    req.getDirection(),
+                    req.getEnglish(),
+                    req.getFormation(),
+                    req.getReached(),
+                    req.getSpirit(),
+                    req.getMotivation(),
                     req.getGender(),
                     req.getNationality(),
                     req.getLaboralsituation(),
@@ -169,7 +198,8 @@ public class SeedDataService {
                     req.getCodeacademyprogress(),
                     req.isAssistedtoinformativesession(),
                     req.getBootcampName(),
-                    req.getProcessState()
+                    req.getProcessState(),
+                    req.getImg()
             )));
             candidatRepository.saveAll(candidats);
             System.out.println("Candidats saved!");

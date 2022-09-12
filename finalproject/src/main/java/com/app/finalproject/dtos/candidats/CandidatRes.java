@@ -5,6 +5,8 @@ import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.ProcessState;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class CandidatRes {
 
@@ -15,6 +17,15 @@ public class CandidatRes {
     private String email;
     private Long phone;
     private Long age;
+    private String degree;
+    private String date;
+    private String superpower;
+    private String direction;
+    private String english;
+    private String formation;
+    private String reached;
+    private String spirit;
+    private String motivation;
     private String gender;
     private String nationality;
     private String laboralsituation;
@@ -23,6 +34,7 @@ public class CandidatRes {
     private boolean assistedtoinformativesession;
     private Bootcamp bootcamp;
     private ProcessState processState;
+    private String img;
 
 
 }

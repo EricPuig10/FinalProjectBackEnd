@@ -17,18 +17,28 @@ public class CandidatMapper {
         resCandidat.setAge(candidat.getAge());
         resCandidat.setEmail(candidat.getEmail());
         resCandidat.setGender(candidat.getGender());
+        resCandidat.setDegree(candidat.getDegree());
+        resCandidat.setDate(candidat.getDate());
+        resCandidat.setEnglish(candidat.getEnglish());
+        resCandidat.setFormation(candidat.getFormation());
+        resCandidat.setMotivation(candidat.getMotivation());
+        resCandidat.setReached(candidat.getReached());
+        resCandidat.setDirection(candidat.getDirection());
+        resCandidat.setSpirit(candidat.getSpirit());
+        resCandidat.setSuperpower(candidat.getSuperpower());
         resCandidat.setLaboralsituation(candidat.getLaboralsituation());
-        //resCandidat.setCodeacademyprogress(candidat.getCodeacademyprogress());
+        resCandidat.setCodeacademyprogress(candidat.getCodeacademyprogress());
         resCandidat.setName(candidat.getName());
         resCandidat.setLastname(candidat.getLastname());
         resCandidat.setSecondlastname(candidat.getSecondlastname());
         resCandidat.setNationality(candidat.getNationality());
         resCandidat.setPhone(candidat.getPhone());
         resCandidat.setId(candidat.getId());
-        //resCandidat.setSololearnprogress(candidat.getSololearnprogress());
-        //resCandidat.setAssistedtoinformativesession(candidat.isAssistedtoinformativesession());
+        resCandidat.setSololearnprogress(candidat.getSololearnprogress());
+        resCandidat.setAssistedtoinformativesession(candidat.isAssistedtoinformativesession());
         resCandidat.setBootcamp(candidat.getBootcamp());
         resCandidat.setProcessState(candidat.getProcessState());
+        resCandidat.setImg(candidat.getImg());
         return resCandidat;
     }
 
@@ -47,12 +57,22 @@ public class CandidatMapper {
         candidat.setSecondlastname(candidatReq.getSecondlastname());
         candidat.setEmail(candidatReq.getEmail());
         candidat.setBootcamp(bootcamp);
+        candidat.setDegree(candidat.getDegree());
+        candidat.setDate(candidat.getDate());
+        candidat.setEnglish(candidat.getEnglish());
+        candidat.setFormation(candidat.getFormation());
+        candidat.setMotivation(candidat.getMotivation());
+        candidat.setReached(candidat.getReached());
+        candidat.setDirection(candidat.getDirection());
+        candidat.setSpirit(candidat.getSpirit());
+        candidat.setSuperpower(candidat.getSuperpower());
         candidat.setProcessState(process);
         candidat.setPhone(candidatReq.getPhone());
         candidat.setAge(candidatReq.getAge());
         candidat.setNationality(candidatReq.getNationality());
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
         candidat.setGender(candidatReq.getGender());
+        candidat.setImg(candidatReq.getImg());
         return candidat;
 
     }
@@ -64,12 +84,22 @@ public class CandidatMapper {
         candidat.setSecondlastname(candidatReq.getSecondlastname());
         candidat.setEmail(candidatReq.getEmail());
         candidat.setBootcamp(bootcamp);
+        candidat.setDegree(candidat.getDegree());
+        candidat.setDate(candidat.getDate());
+        candidat.setEnglish(candidat.getEnglish());
+        candidat.setFormation(candidat.getFormation());
+        candidat.setMotivation(candidat.getMotivation());
+        candidat.setReached(candidat.getReached());
+        candidat.setDirection(candidat.getDirection());
+        candidat.setSpirit(candidat.getSpirit());
+        candidat.setSuperpower(candidat.getSuperpower());
         candidat.setProcessState(process);
         candidat.setPhone(candidatReq.getPhone());
         candidat.setAge(candidatReq.getAge());
         candidat.setNationality(candidatReq.getNationality());
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
         candidat.setGender(candidatReq.getGender());
+        candidat.setImg(candidatReq.getImg());
         return candidat;
 
     }

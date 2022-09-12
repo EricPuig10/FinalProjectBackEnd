@@ -10,6 +10,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "candidats")
@@ -29,12 +30,22 @@ public class Candidat {
     private String email;
     private Long phone;
     private Long age;
+    private String degree;
+    private String date;
+    private String superpower;
+    private String direction;
+    private String english;
+    private String formation;
+    private String reached;
+    private String spirit;
+    private String motivation;
     private String gender;
     private String nationality;
     private String laboralsituation;
     private String sololearnprogress;
     private String codeacademyprogress;
     private boolean assistedtoinformativesession;
+    private String img;
 
 
     @ManyToOne
