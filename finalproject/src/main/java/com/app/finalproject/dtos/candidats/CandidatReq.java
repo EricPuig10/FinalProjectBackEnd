@@ -1,5 +1,6 @@
 package com.app.finalproject.dtos.candidats;
 
+import com.app.finalproject.models.Gender;
 import lombok.Data;
 
 @Data

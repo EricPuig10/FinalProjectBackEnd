@@ -1,11 +1,9 @@
 package com.app.finalproject.controllers;
 
 import com.app.finalproject.auth.facade.AuthenticationFacade;
-import com.app.finalproject.dtos.Message;
 import com.app.finalproject.dtos.category.CategoryReq;
 import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
-import com.app.finalproject.services.CategoryService;
 import com.app.finalproject.services.ICategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -2,12 +2,9 @@ package com.app.finalproject.fakers;
 
 import com.app.finalproject.dtos.bootcamp.BootcampJasonRequest;
 import com.app.finalproject.dtos.candidats.JsonRequest;
-import com.app.finalproject.models.Category;
-import com.app.finalproject.models.ProcessState;
+import com.app.finalproject.models.*;
 import com.app.finalproject.repositories.*;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.app.finalproject.models.Bootcamp;
-import com.app.finalproject.models.Candidat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -138,7 +135,7 @@ public class SeedDataService {
         candidat.setEmail(email);
         candidat.setPhone(phone);
         candidat.setAge(age);
-        candidat.setGender(gender);
+        candidat.setGender((gender));
         candidat.setNationality(nation);
         candidat.setLaboralsituation(laboral);
         candidat.setSololearnprogress(solo);
