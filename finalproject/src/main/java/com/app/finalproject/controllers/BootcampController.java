@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="http://localhost:3000/")
 public class BootcampController {
 
     private IBootcampService bootcampService;
@@ -49,8 +49,6 @@ public class BootcampController {
         return bootcampService.createBootcamp(bootcampReqDto, authUser);
     }
 
-
-
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/bootcamps/{id}")
     ResponseEntity<BootcampResDto> deleteBootcamp(@PathVariable Long id){
@@ -58,7 +56,6 @@ public class BootcampController {
         var bootcamp = bootcampService.deleteBootcamp(id, authUser);
         return new ResponseEntity<>(bootcamp, HttpStatus.OK);
     }
-
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/bootcamps/{id}")

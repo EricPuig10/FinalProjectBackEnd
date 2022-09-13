@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -21,17 +22,21 @@ import java.util.NoSuchElementException;
 public class SeedDataService {
 
     private IBootcampRepository bootcampRepository;
-
     private IProcessStateRepository processStateRepository;
-
     private ICategoryRepository categoryRepository;
-
     private ICandidatRepository candidatRepository;
     private AuthRepository authRepository;
     private RoleRepository roleRepository;
     private PasswordEncoder encoder;
 
-    public SeedDataService(IBootcampRepository bootcampRepository, IProcessStateRepository processStateRepository, ICategoryRepository categoryRepository, ICandidatRepository candidatRepository, AuthRepository authRepository, RoleRepository roleRepository, PasswordEncoder encoder) {
+    public SeedDataService(
+            IBootcampRepository bootcampRepository,
+            IProcessStateRepository processStateRepository,
+            ICategoryRepository categoryRepository,
+            ICandidatRepository candidatRepository,
+            AuthRepository authRepository,
+            RoleRepository roleRepository,
+            PasswordEncoder encoder) {
         this.bootcampRepository = bootcampRepository;
         this.processStateRepository = processStateRepository;
         this.categoryRepository = categoryRepository;
@@ -47,8 +52,8 @@ public class SeedDataService {
         this.createProcessState2();
         this.createCategory("Full Stack");
         this.createCategory("Front End");
-        this.createCategory("Back End");
         this.createCategory("Blockchain");
+        this.createCategory("Artificial Intelligence");
         this.createMultipleBootcamps();
         this.createMultipleCandidats();
 
@@ -69,7 +74,6 @@ public class SeedDataService {
     }
 
 
-
     public ProcessState createProcessState2 (){
         var process = new ProcessState();
         process.setName("Second process");
@@ -77,15 +81,25 @@ public class SeedDataService {
         return  process;
     }
 
-    public Bootcamp createBootcamp(String bootcampName, Category type, String duration, String characteristics, boolean isPresential) {
+    public Bootcamp createBootcamp(
+            String bootcampName,
+            Category type,
+            String duration,
+            String characteristics,
+            String former,
+            String coformer,
+            Date initialDate,
+            Date finalDate) {
         var bootcamp = new Bootcamp();
 
         bootcamp.setBootcampName(bootcampName);
         bootcamp.setDuration(duration);
         bootcamp.setCharacteristics(characteristics);
-        bootcamp.setPresential(isPresential);
+        bootcamp.setFormer(former);
+        bootcamp.setCoformer(coformer);
+        bootcamp.setInitialDate(initialDate);
+        bootcamp.setFinalDate(finalDate);
         bootcamp.setCategory(categoryRepository.findByName(type.getName()).get());
-
 
         return bootcamp;
     }
@@ -97,17 +111,22 @@ public class SeedDataService {
         InputStream inputStream = TypeReference.class.getResourceAsStream("/bootcamps.json");
         try{
             List<BootcampJasonRequest> bootcampReq = mapper.readValue(inputStream, typeReference);
-            bootcampReq.forEach(req -> bootcamps.add(this.createBootcamp(req.getBootcampName(), req.getCategory(), req.getDuration(), req.getCharacteristics(), req.isPresential())));
+            bootcampReq.forEach(req -> bootcamps.add(this.createBootcamp(
+                    req.getBootcampName(),
+                    req.getCategory(),
+                    req.getDuration(),
+                    req.getCharacteristics(),
+                    req.getFormer(),
+                    req.getCoformer(),
+                    req.getInitialDate(),
+                    req.getFinalDate())));
             bootcampRepository.saveAll(bootcamps);
-        }catch (IOException | NoSuchElementException e) {}
+            System.out.println("Bootcamps");
+        }catch (IOException | NoSuchElementException e) {
+            System.out.println("Unable to create bootcamps: "+ e.getMessage());
+        }
 
     }
-
-
-
-
-
-
 
 
     public Candidat createCandidat(
@@ -125,7 +144,6 @@ public class SeedDataService {
             boolean assist,
             String bootcampName,
             String processState){
-
 
         var candidat = new Candidat();
 
@@ -177,9 +195,5 @@ public class SeedDataService {
             System.out.println("Unable to save candidats: "+ e.getMessage());
         }
     }
-
-
-
-
 
 }

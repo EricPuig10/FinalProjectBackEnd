@@ -6,5 +6,4 @@ import lombok.Data;
 public class BootcampResDtoCandidat {
     private String bootcampName;
     private Long id;
-    private boolean isPresential;
 }

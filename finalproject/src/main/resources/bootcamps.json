@@ -2,22 +2,31 @@
   {
     "bootcampName": "Osona",
     "category": "Full Stack",
-    "duration": "850h",
+    "duration": "850",
     "characteristics": "From Osona",
-    "presential": false
+    "former": "Sergi Virgili",
+    "coformer": "Alexandra Galarza",
+    "initialDate": "",
+    "finalDate": ""
   },
   {
     "bootcampName": "FemTech",
     "category": "Back End",
-    "duration": "850h",
+    "duration": "850",
     "characteristics": "Women camp",
-    "presential": true
+    "former": "Pedro Pedrito",
+    "coformer": "Rocío",
+    "initialDate": "",
+    "finalDate": ""
   },
   {
     "bootcampName": "LaCiba",
     "category": "Front End",
-    "duration": "300h",
+    "duration": "300",
     "characteristics": "Women camp",
-    "presential": true
+    "former": "Carlos Pinilla",
+    "coformer": "Javier",
+    "initialDate": "",
+    "finalDate": ""
   }
 ]
