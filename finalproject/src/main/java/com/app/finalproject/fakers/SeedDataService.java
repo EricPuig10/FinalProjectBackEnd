@@ -78,14 +78,14 @@ public class SeedDataService {
         return  process;
     }
 
-    public Bootcamp createBootcamp(String bootcampName, Category type, String duration, String characteristics, boolean isPresential) {
+    public Bootcamp createBootcamp(String bootcampName, String category, String duration, String characteristics, boolean isPresential) {
         var bootcamp = new Bootcamp();
 
         bootcamp.setBootcampName(bootcampName);
         bootcamp.setDuration(duration);
         bootcamp.setCharacteristics(characteristics);
         bootcamp.setPresential(isPresential);
-        bootcamp.setCategory(categoryRepository.findByName(type.getName()).get());
+        bootcamp.setCategory(categoryRepository.findByName(category).get());
 
 
         return bootcamp;
