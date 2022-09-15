@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @Builder
@@ -14,5 +16,8 @@ public class BootcampReqDto {
     private String category;
     private String duration;
     private String characteristics;
-    private boolean isPresential;
+    private String former;
+    private String coformer;
+    private Date initialDate;
+    private Date finalDate;
 }

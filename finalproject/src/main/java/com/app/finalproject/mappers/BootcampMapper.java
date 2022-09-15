@@ -19,7 +19,10 @@ public class BootcampMapper {
         response.setCategory(bootcamp.getCategory());
         response.setDuration(bootcamp.getDuration());
         response.setCharacteristics(bootcamp.getCharacteristics());
-        response.setPresential(bootcamp.isPresential());
+        response.setFormer(bootcamp.getFormer());
+        response.setCoformer(bootcamp.getCoformer());
+        response.setInitialDate(bootcamp.getInitialDate());
+        response.setFinalDate(bootcamp.getFinalDate());
         return response;
     }
 
@@ -37,7 +40,10 @@ public class BootcampMapper {
         bootcamp.setCategory(category);
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
-        bootcamp.setPresential(bootcampReqDto.isPresential());
+        bootcamp.setFormer(bootcampReqDto.getFormer());
+        bootcamp.setCoformer(bootcampReqDto.getCoformer());
+        bootcamp.setInitialDate(bootcampReqDto.getInitialDate());
+        bootcamp.setFinalDate(bootcampReqDto.getFinalDate());
         return bootcamp;
     }
 
@@ -48,7 +54,10 @@ public class BootcampMapper {
         bootcamp.setCategory(category);
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
-        bootcamp.setPresential(bootcampReqDto.isPresential());
+        bootcamp.setFormer(bootcampReqDto.getFormer());
+        bootcamp.setCoformer(bootcampReqDto.getCoformer());
+        bootcamp.setInitialDate(bootcampReqDto.getInitialDate());
+        bootcamp.setFinalDate(bootcampReqDto.getFinalDate());
         return bootcamp;
     }
 }

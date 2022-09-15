@@ -4,6 +4,8 @@ import com.app.finalproject.models.Category;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 public class BootcampResDto {
@@ -12,5 +14,8 @@ public class BootcampResDto {
     private Category category;
     private String duration;
     private String characteristics;
-    private boolean isPresential;
+    private String former;
+    private String coformer;
+    private Date initialDate;
+    private Date finalDate;
 }

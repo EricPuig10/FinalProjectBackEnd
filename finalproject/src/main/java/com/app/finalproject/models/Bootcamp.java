@@ -12,6 +12,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -29,7 +30,15 @@ public class Bootcamp {
     private String bootcampName;
     private String duration;
     private String characteristics;
-    private boolean isPresential;
+
+    private String former;
+
+    private String coformer;
+
+    private Date initialDate;
+
+    private Date finalDate;
+
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -42,13 +51,12 @@ public class Bootcamp {
 
 
 
-    public Bootcamp(Long id, String bootcampName, Category category, String duration, String characteristics, boolean isPresential) {
+    public Bootcamp(Long id, String bootcampName, Category category, String duration, String characteristics) {
         this.id = id;
         this.bootcampName = bootcampName;
         this.category = category;
         this.duration = duration;
         this.characteristics = characteristics;
-        this.isPresential = isPresential;
     }
 
 }
