@@ -78,14 +78,18 @@ public class SeedDataService {
         return  process;
     }
 
-    public Bootcamp createBootcamp(String bootcampName, Category type, String duration, String characteristics, boolean isPresential) {
+    public Bootcamp createBootcamp(String bootcampName, Category type, String duration, String characteristics, String former, String coformer, Date initialDate, Date finalDate) {
         var bootcamp = new Bootcamp();
 
         bootcamp.setBootcampName(bootcampName);
         bootcamp.setDuration(duration);
         bootcamp.setCharacteristics(characteristics);
-        bootcamp.setPresential(isPresential);
         bootcamp.setCategory(categoryRepository.findByName(type.getName()).get());
+        bootcamp.setFormer(former);
+        bootcamp.setCoformer(coformer);
+        bootcamp.setInitialDate(initialDate);
+        bootcamp.setFinalDate(finalDate);
+
 
 
         return bootcamp;
@@ -98,7 +102,7 @@ public class SeedDataService {
         InputStream inputStream = TypeReference.class.getResourceAsStream("/bootcamps.json");
         try{
             List<BootcampJasonRequest> bootcampReq = mapper.readValue(inputStream, typeReference);
-            bootcampReq.forEach(req -> bootcamps.add(this.createBootcamp(req.getBootcampName(), req.getCategory(), req.getDuration(), req.getCharacteristics(), req.isPresential())));
+            bootcampReq.forEach(req -> bootcamps.add(this.createBootcamp(req.getBootcampName(), req.getCategory(), req.getDuration(), req.getCharacteristics(), req.getFormer(), req.getCoformer(), req.getInitialDate(), req.getFinalDate())));
             bootcampRepository.saveAll(bootcamps);
         }catch (IOException | NoSuchElementException e) {}
 

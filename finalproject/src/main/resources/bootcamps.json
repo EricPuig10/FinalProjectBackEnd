@@ -4,20 +4,29 @@
     "category": "Full Stack",
     "duration": "850h",
     "characteristics": "From Osona",
-    "presential": false
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2022-03-01T12:00:00",
+    "finalDate": "2022-09-01T12:00:00"
   },
   {
     "bootcampName": "FemTech",
     "category": "Back End",
     "duration": "850h",
     "characteristics": "Women camp",
-    "presential": true
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2022-03-01T12:00:00",
+    "finalDate": "2022-09-01T12:00:00"
   },
   {
     "bootcampName": "LaCiba",
     "category": "Front End",
     "duration": "300h",
     "characteristics": "Women camp",
-    "presential": true
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2022-03-01T12:00:00",
+    "finalDate": "2022-09-01T12:00:00"
   }
 ]
