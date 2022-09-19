@@ -72,6 +72,7 @@ public class CandidatMapper {
         candidat.setNationality(candidatReq.getNationality());
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
         candidat.setGender(candidatReq.getGender());
+        candidat.setImg(candidatReq.getImg());
         return candidat;
 
     }

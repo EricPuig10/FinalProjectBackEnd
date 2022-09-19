@@ -2,8 +2,8 @@
   {
     "bootcampName": "Osona",
     "category": "Full Stack",
-    "duration": "850h",
-    "characteristics": "From Osona",
+    "duration": "850",
+    "characteristics": "Comarca de Osona",
     "former": "Sergi",
     "coformer" : "Alex",
     "initialDate": "2022-03-01T12:00:00",
@@ -12,8 +12,8 @@
   {
     "bootcampName": "FemTech",
     "category": "Back End",
-    "duration": "850h",
-    "characteristics": "Women camp",
+    "duration": "850",
+    "characteristics": "Bootcamp de mujeres",
     "former": "Sergi",
     "coformer" : "Alex",
     "initialDate": "2022-03-01T12:00:00",
@@ -22,8 +22,8 @@
   {
     "bootcampName": "LaCiba",
     "category": "Front End",
-    "duration": "300h",
-    "characteristics": "Women camp",
+    "duration": "300",
+    "characteristics": "Bootcamp de mujeres",
     "former": "Sergi",
     "coformer" : "Alex",
     "initialDate": "2022-03-01T12:00:00",
