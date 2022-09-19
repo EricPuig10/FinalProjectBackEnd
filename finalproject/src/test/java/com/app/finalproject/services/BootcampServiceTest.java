@@ -25,7 +25,9 @@ class BootcampServiceTest {
 
     @Mock
     IBootcampRepository bootcampRepository;
+    @Mock
     IAuthenticationFacade authenticationFacade;
+    @Mock
     ICategoryRepository categoryRepository;
 
     private IBootcampService bootcampService;
