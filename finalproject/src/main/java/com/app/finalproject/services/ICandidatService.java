@@ -4,6 +4,7 @@ import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ICandidatService {
@@ -20,7 +21,7 @@ public interface ICandidatService {
 
     CandidatRes updateACandidat(CandidatReq candidatReq, Long id, User authUser);
 
-    CandidatRes deleteCandidat(Long id, User authUser);
+    CandidatRes deleteCandidat(Long id, User authUser) throws IOException;
 
     List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser);
 }
