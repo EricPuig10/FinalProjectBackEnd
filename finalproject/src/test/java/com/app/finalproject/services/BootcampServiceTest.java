@@ -6,6 +6,8 @@ import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
+import com.app.finalproject.repositories.ICategoryRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -20,10 +22,42 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class BootcampServiceTest {
 
+    @Mock
+    IBootcampRepository bootcampRepository;
+    @Mock
+    IAuthenticationFacade authenticationFacade;
+
+    @Mock
+    ICategoryRepository categoryRepository;
+
+    private IBootcampService bootcampService;
+
+    @BeforeEach
+    void beforeEach(){
+        this.bootcampService = new BootcampService(bootcampRepository, authenticationFacade, categoryRepository);
+
+    }
 
 
     @Test
-    void getAllReturnsListOfBootcampRes() {
+    void getAllReturnListOfBootcamp(){
+        var bootcampService = new BootcampService(bootcampRepository, authenticationFacade, categoryRepository);
+        var bootcampList = List.of(new Bootcamp(), new Bootcamp());
+        var authUser = new User ();
+        authUser.setId(1L);
+
+        Mockito.when(bootcampRepository.findAll()).thenReturn(bootcampList);
+
+        var sut = bootcampService.getAll();
+        assertThat(sut.size(), equalTo(2));
 
     }
+
+
+
+
+
+
+
+
 }
