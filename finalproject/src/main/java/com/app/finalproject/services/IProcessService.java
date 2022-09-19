@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface IProcessService {
 
-    List<ProcessRes> getAll();
+    List<ProcessRes> getAll(User authUser);
 }

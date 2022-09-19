@@ -41,7 +41,7 @@ class ProcessServiceTest {
 
         Mockito.when(processStateRepository.findAll()).thenReturn(processList);
 
-        var sut = processService.getAll();
+        var sut = processService.getAll(authUser);
 
         assertThat(sut.size(), equalTo(2));
     }

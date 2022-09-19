@@ -29,7 +29,7 @@ public class ProcessStateController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/process")
     List<ProcessRes> getAll(){
-        User auth = authenticationFacade.getAuthUser();
-        return processService.getAll();
+        User authUser = authenticationFacade.getAuthUser();
+        return processService.getAll(authUser);
     }
 }

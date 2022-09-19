@@ -30,11 +30,11 @@ public class ProcessService implements IProcessService{
     }
 
     @Override
-    public List<ProcessRes> getAll() {
+    public List<ProcessRes> getAll(User authUser) {
         List <ProcessState> process = processStateRepository.findAll();
         List <ProcessRes> processList = new ArrayList<>();
         process.forEach(Process -> {
-            ProcessRes processRes = new ProcessMapper().mapProcessToRes(Process);
+            ProcessRes processRes = new ProcessMapper().mapProcessToRes(Process, authUser);
             processList.add(processRes);
         });
         return processList;
