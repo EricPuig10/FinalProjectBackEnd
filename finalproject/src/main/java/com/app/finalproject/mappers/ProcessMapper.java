@@ -8,7 +8,7 @@ import com.app.finalproject.models.User;
 
 public class ProcessMapper {
 
-    public ProcessRes mapProcessToRes(ProcessState process, User auth){
+    public ProcessRes mapProcessToRes(ProcessState process){
         var response = new ProcessRes();
         response.setId(process.getId());
         response.setName(process.getName());

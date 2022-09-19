@@ -30,6 +30,6 @@ public class ProcessStateController {
     @GetMapping("/process")
     List<ProcessRes> getAll(){
         User auth = authenticationFacade.getAuthUser();
-        return processService.getAll(auth);
+        return processService.getAll();
     }
 }

@@ -1,6 +1,7 @@
 package com.app.finalproject.services;
 
 
+import com.app.finalproject.auth.facade.IAuthenticationFacade;
 import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.dtos.process.ProcessRes;
 import com.app.finalproject.mappers.CandidatMapper;
@@ -21,17 +22,19 @@ import java.util.List;
 public class ProcessService implements IProcessService{
 
     private IProcessStateRepository processStateRepository;
+    private IAuthenticationFacade authenticationFacade;
 
-    public ProcessService(IProcessStateRepository processStateRepository) {
+    public ProcessService(IProcessStateRepository processStateRepository, IAuthenticationFacade authenticationFacade) {
         this.processStateRepository = processStateRepository;
+        this.authenticationFacade = authenticationFacade;
     }
 
     @Override
-    public List<ProcessRes> getAll(User auth) {
+    public List<ProcessRes> getAll() {
         List <ProcessState> process = processStateRepository.findAll();
         List <ProcessRes> processList = new ArrayList<>();
         process.forEach(Process -> {
-            ProcessRes processRes = new ProcessMapper().mapProcessToRes(Process, auth);
+            ProcessRes processRes = new ProcessMapper().mapProcessToRes(Process);
             processList.add(processRes);
         });
         return processList;
