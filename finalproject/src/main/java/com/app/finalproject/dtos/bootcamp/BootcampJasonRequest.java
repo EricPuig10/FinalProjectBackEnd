@@ -12,7 +12,7 @@ import java.util.Date;
 @Builder
 public class BootcampJasonRequest {
     private String bootcampName;
-    private String category;
+    private Category category;
     private String duration;
     private String characteristics;
     private String former;
