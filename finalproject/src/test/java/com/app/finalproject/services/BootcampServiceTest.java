@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -52,6 +53,19 @@ class BootcampServiceTest {
     }
 
     @Test
+    void getAllReturnListOfBootcamp() {
+        var bootcampService = new BootcampService(bootcampRepository, authenticationFacade, categoryRepository);
+        var bootcampList = List.of(new Bootcamp(), new Bootcamp());
+        var authUser = new User();
+        authUser.setId(1L);
+
+        Mockito.when(bootcampRepository.findAll()).thenReturn(bootcampList);
+
+        var sut = bootcampService.getAll();
+        assertThat(sut.size(), equalTo(2));
+    }
+
+    @Test
     void findByIdShouldReturnABootcampWithSameParamId() {
         var bootcamp = this.createBootcamp();
         var authUser = new User();
@@ -63,5 +77,4 @@ class BootcampServiceTest {
 
         assertThat(sut.getBootcampName(), equalTo(bootcamp.getBootcampName()));
     }
-
 }
