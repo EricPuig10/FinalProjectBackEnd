@@ -26,14 +26,14 @@ public class BootcampController {
         this.authenticationFacade = authenticationFacade;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/bootcamps")
     ResponseEntity<List<BootcampResDto>> getAll(){
         var bootcamps = bootcampService.getAll();
         return new ResponseEntity<>(bootcamps, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/bootcamps/{id}")
     BootcampResDto getBootcampById(@PathVariable Long id){
         User auth = authenticationFacade.getAuthUser();
@@ -41,7 +41,7 @@ public class BootcampController {
         return bootcamp;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/bootcamps")
     Bootcamp createBootcamp(@RequestBody BootcampReqDto bootcampReqDto){
         var authUser = authenticationFacade.getAuthUser();
@@ -51,7 +51,7 @@ public class BootcampController {
 
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @DeleteMapping("/bootcamps/{id}")
     ResponseEntity<BootcampResDto> deleteBootcamp(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
@@ -60,7 +60,7 @@ public class BootcampController {
     }
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PutMapping("/bootcamps/{id}")
     BootcampResDto updateBootcamp(@PathVariable Long id, @RequestBody BootcampReqDto bootcampReqDto){
         User authUser = authenticationFacade.getAuthUser();

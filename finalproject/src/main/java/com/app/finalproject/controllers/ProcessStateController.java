@@ -26,7 +26,7 @@ public class ProcessStateController {
         this.authenticationFacade = authenticationFacade;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/process")
     List<ProcessRes> getAll(){
         User authUser = authenticationFacade.getAuthUser();
