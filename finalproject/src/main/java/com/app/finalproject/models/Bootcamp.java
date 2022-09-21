@@ -1,5 +1,6 @@
 package com.app.finalproject.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,8 +36,10 @@ public class Bootcamp {
 
     private String coformer;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date initialDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date finalDate;
 
 

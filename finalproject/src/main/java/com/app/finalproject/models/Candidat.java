@@ -1,12 +1,14 @@
 package com.app.finalproject.models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -28,7 +30,8 @@ public class Candidat {
     private Long phone;
     private Long age;
     private String degree;
-    private String date;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date date;
     private String superpower;
     private String direction;
     private String english;
@@ -43,6 +46,10 @@ public class Candidat {
     private String codeacademyprogress;
     private boolean assistedtoinformativesession;
     private String img;
+    private String location;
+    private Document document;
+    private String numberdocument;
+
 
 
     @ManyToOne

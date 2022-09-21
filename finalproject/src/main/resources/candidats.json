@@ -6,7 +6,7 @@
   "phone": 123456789,
   "age": 21,
   "degree": "Bachillerato",
-  "date": "21/03/2022",
+  "date": "2000-09-21",
   "superpower": "Invisibilidad" ,
   "direction": "Calle 13",
   "english": "B1" ,
@@ -22,7 +22,10 @@
   "assistedtoinformativesession": true,
   "bootcampName": "Osona",
   "processState": "First process",
-  "img": "https://media-exp1.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_800_800/0/1587477510501?e=1668038400&v=beta&t=CDPVd3nDIuH06ntqP_TcBYJJYfo-SmgegCV6zvB1CHI"
+  "img": "https://media-exp1.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_800_800/0/1587477510501?e=1668038400&v=beta&t=CDPVd3nDIuH06ntqP_TcBYJJYfo-SmgegCV6zvB1CHI",
+  "location": "Tona",
+  "document": "NIF",
+  "numberdocument": "11111111W"
 
 },
   {
@@ -33,7 +36,7 @@
     "phone": 123456789,
     "age": 21,
     "degree": "Bachillerato",
-    "date": "21/03/2022",
+    "date": "2000-09-21",
     "superpower": "Invisibilidad" ,
     "direction": "Calle 13",
     "english": "B1" ,
@@ -49,7 +52,10 @@
     "assistedtoinformativesession": true,
     "bootcampName": "Osona",
     "processState": "First process",
-    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQGM1CtNvNPhHw/profile-displayphoto-shrink_200_200/0/1661264470577?e=1668643200&v=beta&t=fxeQoNAjyECSes0YG8LYhJzFSoA3Si0mkKrx73Jm_CI"
+    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQGM1CtNvNPhHw/profile-displayphoto-shrink_200_200/0/1661264470577?e=1668643200&v=beta&t=fxeQoNAjyECSes0YG8LYhJzFSoA3Si0mkKrx73Jm_CI",
+    "location": "Tona",
+    "document": "NIF",
+    "numberdocument": "11111111W"
   },
   {
     "name": "Joan",
@@ -59,7 +65,7 @@
     "phone": 123456789,
     "age": 99,
     "degree": "Bachillerato",
-    "date": "21/03/2022",
+    "date": "2000-09-21",
     "superpower": "Invisibilidad" ,
     "direction": "Calle 13",
     "english": "B1" ,
@@ -75,7 +81,10 @@
     "assistedtoinformativesession": true,
     "bootcampName": "Osona",
     "processState": "Second process",
-    "img": "https://media-exp1.licdn.com/dms/image/C5603AQFQv1ATll4Wvw/profile-displayphoto-shrink_200_200/0/1649057125445?e=1668643200&v=beta&t=LGl_5Ij93xlGfj228-4Q208NM1WqgFSqxqMgDPmvQh0"
+    "img": "https://media-exp1.licdn.com/dms/image/C5603AQFQv1ATll4Wvw/profile-displayphoto-shrink_200_200/0/1649057125445?e=1668643200&v=beta&t=LGl_5Ij93xlGfj228-4Q208NM1WqgFSqxqMgDPmvQh0",
+    "location": "Tona",
+    "document": "NIF",
+    "numberdocument": "11111111W"
   },
   {
     "name": "Laura",
@@ -85,7 +94,7 @@
     "phone": 123456789,
     "age": 35,
     "degree": "Bachillerato",
-    "date": "21/03/2022",
+    "date": "2000-09-21",
     "superpower": "Invisibilidad" ,
     "direction": "Calle 13",
     "english": "B1" ,
@@ -101,6 +110,9 @@
     "assistedtoinformativesession": true,
     "bootcampName": "FemTech",
     "processState": "Second process",
-    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQFPYwNZECLEMQ/profile-displayphoto-shrink_200_200/0/1662972608911?e=1668643200&v=beta&t=W9KP8wdYENtpm4o162x8tFJWsh5HYGla-PHHZxHUPyY"
+    "img": "https://media-exp1.licdn.com/dms/image/C4D03AQFPYwNZECLEMQ/profile-displayphoto-shrink_200_200/0/1662972608911?e=1668643200&v=beta&t=W9KP8wdYENtpm4o162x8tFJWsh5HYGla-PHHZxHUPyY",
+    "location": "Tona",
+    "document": "NIE",
+    "numberdocument": "11111111W"
 
   }]

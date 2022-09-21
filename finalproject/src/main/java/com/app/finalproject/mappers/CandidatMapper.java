@@ -4,18 +4,21 @@ import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.models.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CandidatMapper {
-
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     public CandidatRes mapToRes(Candidat candidat, User auth) {
         CandidatRes resCandidat = new CandidatRes();
+
+
         resCandidat.setAge(candidat.getAge());
         resCandidat.setEmail(candidat.getEmail());
         resCandidat.setGender(String.valueOf(candidat.getGender()));
         resCandidat.setDegree(candidat.getDegree());
-        resCandidat.setDate(candidat.getDate());
+        resCandidat.setDate((candidat.getDate()));
         resCandidat.setEnglish(candidat.getEnglish());
         resCandidat.setFormation(candidat.getFormation());
         resCandidat.setMotivation(candidat.getMotivation());
@@ -36,6 +39,13 @@ public class CandidatMapper {
         resCandidat.setBootcamp(candidat.getBootcamp());
         resCandidat.setProcessState(candidat.getProcessState());
         resCandidat.setImg(candidat.getImg());
+        resCandidat.setLocation(candidat.getLocation());
+        resCandidat.setDocument(String.valueOf(candidat.getDocument()));
+        resCandidat.setNumberdocument(candidat.getNumberdocument());
+        resCandidat.setSololearnprogress(candidat.getSololearnprogress());
+        resCandidat.setCodeacademyprogress(candidat.getCodeacademyprogress());
+        resCandidat.setAssistedtoinformativesession(candidat.isAssistedtoinformativesession());
+
         return resCandidat;
     }
 
@@ -54,15 +64,15 @@ public class CandidatMapper {
         candidat.setSecondlastname(candidatReq.getSecondlastname());
         candidat.setEmail(candidatReq.getEmail());
         candidat.setBootcamp(bootcamp);
-        candidat.setDegree(candidat.getDegree());
-        candidat.setDate(candidat.getDate());
-        candidat.setEnglish(candidat.getEnglish());
-        candidat.setFormation(candidat.getFormation());
-        candidat.setMotivation(candidat.getMotivation());
-        candidat.setReached(candidat.getReached());
-        candidat.setDirection(candidat.getDirection());
-        candidat.setSpirit(candidat.getSpirit());
-        candidat.setSuperpower(candidat.getSuperpower());
+        candidat.setDegree(candidatReq.getDegree());
+        candidat.setDate((candidatReq.getDate()));
+        candidat.setEnglish(candidatReq.getEnglish());
+        candidat.setFormation(candidatReq.getFormation());
+        candidat.setMotivation(candidatReq.getMotivation());
+        candidat.setReached(candidatReq.getReached());
+        candidat.setDirection(candidatReq.getDirection());
+        candidat.setSpirit(candidatReq.getSpirit());
+        candidat.setSuperpower(candidatReq.getSuperpower());
         candidat.setProcessState(process);
         candidat.setPhone(candidatReq.getPhone());
         candidat.setAge(candidatReq.getAge());
@@ -70,6 +80,13 @@ public class CandidatMapper {
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
         candidat.setGender(Gender.valueOf(candidatReq.getGender()));
         candidat.setImg(candidatReq.getImg());
+        candidat.setLocation(candidatReq.getLocation());
+        candidat.setDocument(Document.valueOf(candidatReq.getDocument()));
+        candidat.setNumberdocument(candidatReq.getNumberdocument());
+        candidat.setSololearnprogress(candidatReq.getSololearnprogress());
+        candidat.setCodeacademyprogress(candidatReq.getCodeacademyprogress());
+        candidat.setAssistedtoinformativesession(candidatReq.isAssistedtoinformativesession());
+
         return candidat;
 
     }
@@ -81,15 +98,15 @@ public class CandidatMapper {
         candidat.setSecondlastname(candidatReq.getSecondlastname());
         candidat.setEmail(candidatReq.getEmail());
         candidat.setBootcamp(bootcamp);
-        candidat.setDegree(candidat.getDegree());
-        candidat.setDate(candidat.getDate());
-        candidat.setEnglish(candidat.getEnglish());
-        candidat.setFormation(candidat.getFormation());
-        candidat.setMotivation(candidat.getMotivation());
-        candidat.setReached(candidat.getReached());
-        candidat.setDirection(candidat.getDirection());
-        candidat.setSpirit(candidat.getSpirit());
-        candidat.setSuperpower(candidat.getSuperpower());
+        candidat.setDegree(candidatReq.getDegree());
+        candidat.setDate((candidatReq.getDate()));
+        candidat.setEnglish(candidatReq.getEnglish());
+        candidat.setFormation(candidatReq.getFormation());
+        candidat.setMotivation(candidatReq.getMotivation());
+        candidat.setReached(candidatReq.getReached());
+        candidat.setDirection(candidatReq.getDirection());
+        candidat.setSpirit(candidatReq.getSpirit());
+        candidat.setSuperpower(candidatReq.getSuperpower());
         candidat.setProcessState(process);
         candidat.setPhone(candidatReq.getPhone());
         candidat.setAge(candidatReq.getAge());
@@ -97,6 +114,12 @@ public class CandidatMapper {
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
         candidat.setGender(Gender.valueOf(candidatReq.getGender()));
         candidat.setImg(candidatReq.getImg());
+        candidat.setLocation(candidatReq.getLocation());
+        candidat.setDocument(Document.valueOf(candidatReq.getDocument()));
+        candidat.setNumberdocument(candidatReq.getNumberdocument());
+        candidat.setSololearnprogress(candidatReq.getSololearnprogress());
+        candidat.setCodeacademyprogress(candidatReq.getCodeacademyprogress());
+        candidat.setAssistedtoinformativesession(candidatReq.isAssistedtoinformativesession());
         return candidat;
 
     }

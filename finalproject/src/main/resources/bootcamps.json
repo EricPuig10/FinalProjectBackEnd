@@ -6,8 +6,8 @@
     "characteristics": "Comarca de Osona",
     "former": "Sergi",
     "coformer" : "Alex",
-    "initialDate": "2022-03-01T12:00:00",
-    "finalDate": "2022-09-01T12:00:00"
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
   },
   {
     "bootcampName": "FemTech",
@@ -16,8 +16,8 @@
     "characteristics": "Bootcamp de mujeres",
     "former": "Sergi",
     "coformer" : "Alex",
-    "initialDate": "2022-03-01T12:00:00",
-    "finalDate": "2022-09-01T12:00:00"
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
   },
   {
     "bootcampName": "LaCiba",
@@ -26,7 +26,7 @@
     "characteristics": "Bootcamp de mujeres",
     "former": "Sergi",
     "coformer" : "Alex",
-    "initialDate": "2022-03-01T12:00:00",
-    "finalDate": "2022-09-01T12:00:00"
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
   }
 ]

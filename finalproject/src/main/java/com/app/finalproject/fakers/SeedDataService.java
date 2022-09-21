@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -123,7 +124,7 @@ public class SeedDataService {
             Long phone,
             Long age,
             String degree,
-            String date,
+            Date date,
             String superpower,
             String direction,
             String english,
@@ -138,7 +139,8 @@ public class SeedDataService {
             String code,
             boolean assist,
             String bootcampName,
-            String processState, String img){
+            String processState, String img,
+            String location, String document, String numberdocument){
 
 
         var candidat = new Candidat();
@@ -168,6 +170,9 @@ public class SeedDataService {
         candidat.setBootcamp(bootcampRepository.findByBootcampName(bootcampName).get());
         candidat.setProcessState(processStateRepository.findByName(processState).get());
         candidat.setImg(img);
+        candidat.setLocation(location);
+        candidat.setDocument(Document.valueOf(document));
+        candidat.setNumberdocument(numberdocument);
 
         return candidat;
     }
@@ -203,7 +208,10 @@ public class SeedDataService {
                     req.isAssistedtoinformativesession(),
                     req.getBootcampName(),
                     req.getProcessState(),
-                    req.getImg()
+                    req.getImg(),
+                    req.getLocation(),
+                    req.getDocument(),
+                    req.getNumberdocument()
             )));
             candidatRepository.saveAll(candidats);
             System.out.println("Candidats saved!");
