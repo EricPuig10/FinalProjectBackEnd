@@ -2,10 +2,7 @@ package com.app.finalproject.mappers;
 
 import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
-import com.app.finalproject.models.Bootcamp;
-import com.app.finalproject.models.Candidat;
-import com.app.finalproject.models.ProcessState;
-import com.app.finalproject.models.User;
+import com.app.finalproject.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,7 @@ public class CandidatMapper {
         CandidatRes resCandidat = new CandidatRes();
         resCandidat.setAge(candidat.getAge());
         resCandidat.setEmail(candidat.getEmail());
-        resCandidat.setGender(candidat.getGender());
+        resCandidat.setGender(String.valueOf(candidat.getGender()));
         resCandidat.setDegree(candidat.getDegree());
         resCandidat.setDate(candidat.getDate());
         resCandidat.setEnglish(candidat.getEnglish());
@@ -71,7 +68,7 @@ public class CandidatMapper {
         candidat.setAge(candidatReq.getAge());
         candidat.setNationality(candidatReq.getNationality());
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
-        candidat.setGender(candidatReq.getGender());
+        candidat.setGender(Gender.valueOf(candidatReq.getGender()));
         candidat.setImg(candidatReq.getImg());
         return candidat;
 
@@ -98,7 +95,7 @@ public class CandidatMapper {
         candidat.setAge(candidatReq.getAge());
         candidat.setNationality(candidatReq.getNationality());
         candidat.setLaboralsituation(candidatReq.getLaboralsituation());
-        candidat.setGender(candidatReq.getGender());
+        candidat.setGender(Gender.valueOf(candidatReq.getGender()));
         candidat.setImg(candidatReq.getImg());
         return candidat;
 

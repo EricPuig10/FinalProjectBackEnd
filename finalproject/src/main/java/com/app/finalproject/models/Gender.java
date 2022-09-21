@@ -1,26 +1,26 @@
 package com.app.finalproject.models;
 
 public enum Gender {
-    MALE{
+    Masculino{
         @Override
         public String toString() {
-            return super.toString().toLowerCase();
+            return super.toString();
         }
-    }, FEMALE{
+    }, Femenino{
         @Override
         public String toString() {
-            return super.toString().toLowerCase();
+            return super.toString();
         }
     },
     NB{
         @Override
         public String toString() {
-            return super.toString().toLowerCase();
+            return super.toString();
         }
-    }, OTHER{
+    }, Otro{
         @Override
         public String toString() {
-            return super.toString().toLowerCase();
+            return super.toString();
         }
     }
 }
