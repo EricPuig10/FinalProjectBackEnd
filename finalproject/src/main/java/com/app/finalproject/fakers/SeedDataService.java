@@ -158,7 +158,7 @@ public class SeedDataService {
         candidat.setReached(reached);
         candidat.setSpirit(spirit);
         candidat.setMotivation(motivation);
-        candidat.setGender((gender));
+        candidat.setGender(Gender.valueOf((gender)));
         candidat.setNationality(nation);
         candidat.setLaboralsituation(laboral);
         candidat.setSololearnprogress(solo);

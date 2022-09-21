@@ -36,7 +36,7 @@ public class Candidat {
     private String reached;
     private String spirit;
     private String motivation;
-    private String gender;
+    private Gender gender;
     private String nationality;
     private String laboralsituation;
     private String sololearnprogress;
