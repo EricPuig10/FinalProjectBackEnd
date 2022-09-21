@@ -60,6 +60,7 @@ class CandidatServiceTest {
         assertThat (sut.size(), equalTo(2));
     }
 
+
     @Test
     void findByBootcampCandidatsReturnsAListOfCandidatsRes() {
         var candidatService = new CandidatService(candidatRepository, bootcampRepository, processStateRepository);
@@ -88,4 +89,7 @@ class CandidatServiceTest {
         var sut = candidatService.findByProcessCandidats(1L, user);
         assertThat(sut, equalTo(foundCandidats));
     }
+
+
+
 }
