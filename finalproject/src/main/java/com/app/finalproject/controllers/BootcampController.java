@@ -45,7 +45,6 @@ public class BootcampController {
     @PostMapping("/bootcamps")
     Bootcamp createBootcamp(@RequestBody BootcampReqDto bootcampReqDto){
         var authUser = authenticationFacade.getAuthUser();
-
         return bootcampService.createBootcamp(bootcampReqDto, authUser);
     }
 

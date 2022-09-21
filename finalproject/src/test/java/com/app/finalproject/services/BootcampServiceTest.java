@@ -1,6 +1,7 @@
 package com.app.finalproject.services;
 
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
+import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
@@ -12,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -78,5 +80,22 @@ class BootcampServiceTest {
         var sut = bootcampService.findById(1L, authUser);
 
         assertThat(sut.getBootcampName(), equalTo(bootcamp.getBootcampName()));
+    }
+
+    @Test
+    void createShouldSaveABootcampFromBootcampReqDto() {
+
+        var bootcampRequest = new BootcampReqDto("name", "category", "300", "type", "former", "coformer", new Date(), new Date());
+        System.out.println(bootcampRequest.getInitialDate());
+        var bootcamp = createBootcamp();
+        var authUser = new User();
+        var category = new Category("category");
+
+        Mockito.when(categoryRepository.findByName(any(String.class))).thenReturn(Optional.of(category));
+        Mockito.when(bootcampRepository.save(any(Bootcamp.class))).thenReturn(bootcamp);
+
+        var sut = bootcampService.createBootcamp(bootcampRequest, authUser);
+
+        assertThat(sut.getCategory(), equalTo(bootcamp.getCategory()));
     }
 }
