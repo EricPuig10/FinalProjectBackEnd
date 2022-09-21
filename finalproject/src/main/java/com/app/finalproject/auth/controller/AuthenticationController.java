@@ -141,7 +141,7 @@ public class AuthenticationController {
         user.setRoles(roles);
         authRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse("Usuario registrado con exito!"));
     }
 
     private boolean someUserAlreadyExist() {

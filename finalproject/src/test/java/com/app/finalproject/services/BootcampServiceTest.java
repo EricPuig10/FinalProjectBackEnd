@@ -1,7 +1,14 @@
 package com.app.finalproject.services;
 
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
+import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
+import com.app.finalproject.dtos.bootcamp.BootcampResDto;
+import com.app.finalproject.dtos.candidats.CandidatRes;
+import com.app.finalproject.exceptions.NotFoundException;
+import com.app.finalproject.mappers.BootcampMapper;
+import com.app.finalproject.mappers.CandidatMapper;
 import com.app.finalproject.models.Bootcamp;
+import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
@@ -12,6 +19,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,6 +75,7 @@ class BootcampServiceTest {
         assertThat(sut.size(), equalTo(2));
     }
 
+
     @Test
     void findByIdShouldReturnABootcampWithSameParamId() {
         var bootcamp = this.createBootcamp();
@@ -79,4 +88,17 @@ class BootcampServiceTest {
 
         assertThat(sut.getBootcampName(), equalTo(bootcamp.getBootcampName()));
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
