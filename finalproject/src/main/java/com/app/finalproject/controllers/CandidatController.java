@@ -31,7 +31,7 @@ public class CandidatController {
 
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/candidats")
+    @GetMapping("/candidatos")
     List<CandidatRes> getAll(){
         User auth = authenticationFacade.getAuthUser();
         return candidatService.getAll(auth);
@@ -39,14 +39,14 @@ public class CandidatController {
 
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/candidats/{id}/bootcamp")
+    @GetMapping("/candidatos/{id}/bootcamp")
     List<CandidatRes> getCandidatsByBootcamp(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
         return candidatService.findByBootcampCandidats(id, authUser);
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/process/{id}/candidats")
+    @GetMapping("/procesos/{id}/candidatos")
     List<CandidatRes> getProcessCandidats(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
         return candidatService.findByProcessCandidats(id, authUser);
@@ -54,7 +54,7 @@ public class CandidatController {
 
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/candidats/{id}")
+    @GetMapping("/candidatos/{id}")
     CandidatRes getCandidatById(@PathVariable Long id){
         User auth = authenticationFacade.getAuthUser();
         var moment = this.candidatService.findById(id, auth);
@@ -62,14 +62,14 @@ public class CandidatController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PostMapping("/candidats")
+    @PostMapping("/candidatos")
     Candidat createCandidat(@RequestBody CandidatReq candidatReq){
         var authUser = authenticationFacade.getAuthUser();
         return candidatService.create(candidatReq, authUser);
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PutMapping("/candidats/{id}")
+    @PutMapping("/candidatos/{id}")
     CandidatRes updateCandidat(@PathVariable Long id, @RequestBody CandidatReq candidatReq) {
         User authUser = authenticationFacade.getAuthUser();
 
@@ -77,7 +77,7 @@ public class CandidatController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @DeleteMapping("/candidats/{id}")
+    @DeleteMapping("/candidatos/{id}")
     ResponseEntity<CandidatRes> deleteCandidat(@PathVariable Long id) throws IOException {
         User authUser = authenticationFacade.getAuthUser();
         var candidat =  candidatService.deleteCandidat(id, authUser);
@@ -87,7 +87,7 @@ public class CandidatController {
 
     // Option to get all candidates from one bootamp
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/bootcamps/{id}/candidats")
+    @GetMapping("/bootcamps/{id}/candidatos")
     List<CandidatRes> getBootcampCandidates(@PathVariable Long id) {
         User authUser = authenticationFacade.getAuthUser();
         return candidatService.findCandidatesByBootcampId(id, authUser);
