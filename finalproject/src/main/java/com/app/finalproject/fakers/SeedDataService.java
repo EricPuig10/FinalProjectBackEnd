@@ -47,6 +47,7 @@ public class SeedDataService {
     public void addData(){
         this.createProcessState();
         this.createProcessState2();
+        this.createProcessState3();
         this.createCategory("Full Stack");
         this.createCategory("Front End");
         this.createCategory("AI");
@@ -58,7 +59,7 @@ public class SeedDataService {
 
     public ProcessState createProcessState (){
         var process = new ProcessState();
-        process.setName("First process");
+        process.setName("Registradx");
         processStateRepository.save(process);
         return process;
     }
@@ -67,17 +68,17 @@ public class SeedDataService {
 
     public ProcessState createProcessState2 (){
         var process = new ProcessState();
-        process.setName("Second process");
+        process.setName("Pre-seleccionadx");
         processStateRepository.save(process);
         return process;
     }
 
-//    public ProcessState createProcessState3() {
-//        var process = new ProcessState();
-//        process.setName("Seleccionado");
-//        processStateRepository.save(process);
-//        return process;
-//    }
+    public ProcessState createProcessState3() {
+        var process = new ProcessState();
+        process.setName("Seleccionadx");
+        processStateRepository.save(process);
+        return process;
+    }
 
     public Category createCategory (String name){
         var category = new Category();
@@ -97,8 +98,6 @@ public class SeedDataService {
         bootcamp.setCoformer(coformer);
         bootcamp.setInitialDate(initialDate);
         bootcamp.setFinalDate(finalDate);
-
-
 
         return bootcamp;
     }

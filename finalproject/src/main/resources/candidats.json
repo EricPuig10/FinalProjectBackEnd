@@ -21,7 +21,7 @@
   "codeacademyprogress": "https://www.codecademy.com/profiles/EricPuig",
   "assistedtoinformativesession": true,
   "bootcampName": "Osona",
-  "processState": "First process",
+  "processState": "Registradx",
   "img": "https://media-exp1.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_800_800/0/1587477510501?e=1668038400&v=beta&t=CDPVd3nDIuH06ntqP_TcBYJJYfo-SmgegCV6zvB1CHI",
   "location": "Tona",
   "document": "NIF",
@@ -29,7 +29,7 @@
 
 },
   {
-    "name": "Natalia",
+    "name": "Natàlia",
     "lastname": "Boya",
     "secondlastname": "Roca",
     "email": "nboyaroca",
@@ -37,7 +37,7 @@
     "age": 21,
     "degree": "Bachillerato",
     "date": "2000-09-21",
-    "superpower": "Invisibilidad" ,
+    "superpower": "Telekinesis",
     "direction": "Calle 13",
     "english": "B1" ,
     "formation": "Full Stack",
@@ -51,9 +51,9 @@
     "codeacademyprogress": "https://www.codecademy.com/profiles/array8391488472",
     "assistedtoinformativesession": true,
     "bootcampName": "Osona",
-    "processState": "First process",
+    "processState": "Seleccionadx",
     "img": "https://media-exp1.licdn.com/dms/image/C4D03AQGM1CtNvNPhHw/profile-displayphoto-shrink_200_200/0/1661264470577?e=1668643200&v=beta&t=fxeQoNAjyECSes0YG8LYhJzFSoA3Si0mkKrx73Jm_CI",
-    "location": "Tona",
+    "location": "Gurb",
     "document": "NIF",
     "numberdocument": "11111111W"
   },
@@ -80,9 +80,9 @@
     "codeacademyprogress": "https://www.codecademy.com/profiles/Jilbosch",
     "assistedtoinformativesession": true,
     "bootcampName": "Osona",
-    "processState": "Second process",
+    "processState": "Pre-seleccionadx",
     "img": "https://media-exp1.licdn.com/dms/image/C5603AQFQv1ATll4Wvw/profile-displayphoto-shrink_200_200/0/1649057125445?e=1668643200&v=beta&t=LGl_5Ij93xlGfj228-4Q208NM1WqgFSqxqMgDPmvQh0",
-    "location": "Tona",
+    "location": "Vic",
     "document": "NIF",
     "numberdocument": "11111111W"
   },
@@ -109,9 +109,9 @@
     "codeacademyprogress": "",
     "assistedtoinformativesession": true,
     "bootcampName": "FemTech",
-    "processState": "Second process",
+    "processState": "Pre-seleccionadx",
     "img": "https://media-exp1.licdn.com/dms/image/C4D03AQFPYwNZECLEMQ/profile-displayphoto-shrink_200_200/0/1662972608911?e=1668643200&v=beta&t=W9KP8wdYENtpm4o162x8tFJWsh5HYGla-PHHZxHUPyY",
-    "location": "Tona",
+    "location": "La Garriga",
     "document": "NIE",
     "numberdocument": "11111111W"
 
