@@ -46,8 +46,8 @@ public class CandidatController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/candidats/{id}/process")
-    List<CandidatRes> getCandidatsByProcess(@PathVariable Long id){
+    @GetMapping("/process/{id}/candidats")
+    List<CandidatRes> getProcessCandidats(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
         return candidatService.findByProcessCandidats(id, authUser);
     }

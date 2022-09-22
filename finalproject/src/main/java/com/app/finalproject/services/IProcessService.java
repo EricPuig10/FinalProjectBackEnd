@@ -10,4 +10,6 @@ import java.util.List;
 public interface IProcessService {
 
     List<ProcessRes> getAll(User authUser);
+
+    ProcessRes findById(Long id, User auth);
 }
