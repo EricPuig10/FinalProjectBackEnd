@@ -10,5 +10,9 @@
         <module name="com.app.finalproject.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="finalproject.finalproject.main" target="11" />
+      <module name="finalproject.finalproject.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

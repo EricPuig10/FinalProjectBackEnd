@@ -8,6 +8,7 @@ import com.app.finalproject.repositories.AuthRepository;
 import com.app.finalproject.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -47,6 +48,7 @@ public class AuthenticationController {
         this.jwtUtils = jwtUtils;
     }
 
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
@@ -68,6 +70,7 @@ public class AuthenticationController {
                 roles));
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 //        if (someUserAlreadyExist()) {
@@ -77,13 +80,13 @@ public class AuthenticationController {
         if (authRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Username is already taken!"));
+                    .body(new MessageResponse("Este nombre de usuario ya existe!"));
         }
 
         if (authRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Email is already in use!"));
+                    .body(new MessageResponse("Este e-mail ya existe!"));
         }
 
         Pattern pattern = Pattern
@@ -98,7 +101,7 @@ public class AuthenticationController {
         if(!mather.find()) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Email format wrong!"));
+                    .body(new MessageResponse("Formato de e-mail erróneo!"));
         }
 
         // Create new user's account
@@ -111,14 +114,14 @@ public class AuthenticationController {
 
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(Role.RoleName.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                    .orElseThrow(() -> new RuntimeException("Error: Role no encontrado."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin" : {
                         Role adminRole = roleRepository.findByName(Role.RoleName.ROLE_ADMIN)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                                .orElseThrow(() -> new RuntimeException("Error: Role mo encontrado."));
                         roles.add(adminRole);
                     }
 //                    case "mod" -> {
@@ -128,7 +131,7 @@ public class AuthenticationController {
 //                    }
                     default : {
                         Role userRole = roleRepository.findByName(Role.RoleName.ROLE_USER)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                                .orElseThrow(() -> new RuntimeException("Error: Role no encontrado."));
                         roles.add(userRole);
                     }
                 }
@@ -138,7 +141,7 @@ public class AuthenticationController {
         user.setRoles(roles);
         authRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse("Usuario registrado con éxito!"));
     }
 
     private boolean someUserAlreadyExist() {

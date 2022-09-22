@@ -2,22 +2,31 @@
   {
     "bootcampName": "Osona",
     "category": "Full Stack",
-    "duration": "850h",
-    "characteristics": "From Osona",
-    "presential": false
+    "duration": "850",
+    "characteristics": "Comarca de Osona",
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
   },
   {
     "bootcampName": "FemTech",
-    "category": "Full Stack",
-    "duration": "850h",
-    "characteristics": "Women camp",
-    "presential": true
+    "category": "AI",
+    "duration": "850",
+    "characteristics": "Bootcamp de mujeres",
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
   },
   {
     "bootcampName": "LaCiba",
     "category": "Front End",
-    "duration": "300h",
-    "characteristics": "Women camp",
-    "presential": true
+    "duration": "300",
+    "characteristics": "Bootcamp de mujeres",
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
   }
 ]

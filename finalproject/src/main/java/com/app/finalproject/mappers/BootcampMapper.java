@@ -3,6 +3,7 @@ package com.app.finalproject.mappers;
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.models.Bootcamp;
+import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
 
 import java.util.ArrayList;
@@ -18,7 +19,10 @@ public class BootcampMapper {
         response.setCategory(bootcamp.getCategory());
         response.setDuration(bootcamp.getDuration());
         response.setCharacteristics(bootcamp.getCharacteristics());
-        response.setPresential(bootcamp.isPresential());
+        response.setFormer(bootcamp.getFormer());
+        response.setCoformer(bootcamp.getCoformer());
+        response.setInitialDate(bootcamp.getInitialDate());
+        response.setFinalDate(bootcamp.getFinalDate());
         return response;
     }
 
@@ -31,23 +35,29 @@ public class BootcampMapper {
     }
 
 
-    public Bootcamp mapRequestToBootcampToEdit(BootcampReqDto bootcampReqDto,Bootcamp bootcamp){
+    public Bootcamp mapRequestToBootcampToEdit(BootcampReqDto bootcampReqDto,Bootcamp bootcamp, Category category){
         bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
-        bootcamp.setCategory(bootcampReqDto.getCategory());
+        bootcamp.setCategory(category);
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
-        bootcamp.setPresential(bootcampReqDto.isPresential());
+        bootcamp.setFormer(bootcampReqDto.getFormer());
+        bootcamp.setCoformer(bootcampReqDto.getCoformer());
+        bootcamp.setInitialDate(bootcampReqDto.getInitialDate());
+        bootcamp.setFinalDate(bootcampReqDto.getFinalDate());
         return bootcamp;
     }
 
 
-    public Bootcamp mapRequestToBootcampToCreate(BootcampReqDto bootcampReqDto){
+    public Bootcamp mapRequestToBootcampToCreate(BootcampReqDto bootcampReqDto, Category category){
         var bootcamp = new Bootcamp();
         bootcamp.setBootcampName(bootcampReqDto.getBootcampName());
-        bootcamp.setCategory(bootcampReqDto.getCategory());
+        bootcamp.setCategory(category);
         bootcamp.setDuration(bootcampReqDto.getDuration());
         bootcamp.setCharacteristics(bootcampReqDto.getCharacteristics());
-        bootcamp.setPresential(bootcampReqDto.isPresential());
+        bootcamp.setFormer(bootcampReqDto.getFormer());
+        bootcamp.setCoformer(bootcampReqDto.getCoformer());
+        bootcamp.setInitialDate(bootcampReqDto.getInitialDate());
+        bootcamp.setFinalDate(bootcampReqDto.getFinalDate());
         return bootcamp;
     }
 }

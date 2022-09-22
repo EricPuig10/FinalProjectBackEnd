@@ -1,8 +1,12 @@
 package com.app.finalproject.dtos.candidats;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -14,6 +18,16 @@ public class JsonRequest {
     private String email;
     private Long phone;
     private Long age;
+    private String degree;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date date;
+    private String superpower;
+    private String direction;
+    private String english;
+    private String formation;
+    private String reached;
+    private String spirit;
+    private String motivation;
     private String gender;
     private String nationality;
     private String laboralsituation;
@@ -22,6 +36,11 @@ public class JsonRequest {
     private boolean assistedtoinformativesession;
     private String bootcampName;
     private String processState;
+    private String img;
+    private String location;
+    private String document;
+    private String numberdocument;
+
 
     public JsonRequest() {
     }

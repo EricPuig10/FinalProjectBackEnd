@@ -5,14 +5,17 @@ import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.CandidatMapper;
 import com.app.finalproject.models.Candidat;
+import com.app.finalproject.models.Image;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
 import com.app.finalproject.repositories.ICandidatRepository;
 import com.app.finalproject.repositories.IProcessStateRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -24,6 +27,9 @@ public class CandidatService implements ICandidatService {
 
     private IProcessStateRepository processStateRepository;
 
+    ICloudinaryService cloudinaryService;
+
+    IImageService imageService;
     public CandidatService(ICandidatRepository candidatRepository, IBootcampRepository bootcampRepository, IProcessStateRepository processStateRepository) {
         this.candidatRepository = candidatRepository;
         this.bootcampRepository = bootcampRepository;
@@ -99,7 +105,7 @@ public class CandidatService implements ICandidatService {
     }
 
     @Override
-    public CandidatRes deleteCandidat(Long id, User auth){
+    public CandidatRes deleteCandidat(Long id, User auth) throws IOException {
         Candidat candidat = this.candidatRepository.findById(id).get();
         CandidatRes resCandidat = new CandidatMapper().mapToRes(candidat, auth);
         this.candidatRepository.delete(candidat);

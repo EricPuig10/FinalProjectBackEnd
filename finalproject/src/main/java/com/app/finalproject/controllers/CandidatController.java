@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -28,65 +29,61 @@ public class CandidatController {
     }
 
 
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/candidats")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/candidatos")
     List<CandidatRes> getAll(){
         User auth = authenticationFacade.getAuthUser();
         return candidatService.getAll(auth);
     }
 
+//    @PreAuthorize("hasRole('ROLE_USER')")
+//    @GetMapping("/candidatos/{id}/bootcamp")
+//    List<CandidatRes> getCandidatsByBootcamp(@PathVariable Long id){
+//        User authUser = authenticationFacade.getAuthUser();
+//        return candidatService.findByBootcampCandidats(id, authUser);
+//    }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/candidats/{id}/bootcamp")
-    List<CandidatRes> getCandidatsByBootcamp(@PathVariable Long id){
-        User authUser = authenticationFacade.getAuthUser();
-        return candidatService.findByBootcampCandidats(id, authUser);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/candidats/{id}/process")
-    List<CandidatRes> getCandidatsByProcess(@PathVariable Long id){
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/procesos/{id}/candidatos")
+    List<CandidatRes> getProcessCandidats(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
         return candidatService.findByProcessCandidats(id, authUser);
     }
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/candidats/{id}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/candidatos/{id}")
     CandidatRes getCandidatById(@PathVariable Long id){
         User auth = authenticationFacade.getAuthUser();
         var moment = this.candidatService.findById(id, auth);
         return moment;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/candidats")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PostMapping("/candidatos")
     Candidat createCandidat(@RequestBody CandidatReq candidatReq){
         var authUser = authenticationFacade.getAuthUser();
         return candidatService.create(candidatReq, authUser);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PutMapping("/candidats/{id}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PutMapping("/candidatos/{id}")
     CandidatRes updateCandidat(@PathVariable Long id, @RequestBody CandidatReq candidatReq) {
         User authUser = authenticationFacade.getAuthUser();
 
         return candidatService.updateACandidat(candidatReq, id, authUser);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping("/candidats/{id}")
-    ResponseEntity<CandidatRes> deleteCandidat(@PathVariable Long id) {
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @DeleteMapping("/candidatos/{id}")
+    ResponseEntity<CandidatRes> deleteCandidat(@PathVariable Long id) throws IOException {
         User authUser = authenticationFacade.getAuthUser();
         var candidat =  candidatService.deleteCandidat(id, authUser);
         return new ResponseEntity<>(candidat, HttpStatus.OK);
     }
 
-
-    // Option to get all candidates from one bootamp
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/bootcamps/{id}/candidats")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/bootcamps/{id}/candidatos")
     List<CandidatRes> getBootcampCandidates(@PathVariable Long id) {
         User authUser = authenticationFacade.getAuthUser();
         return candidatService.findCandidatesByBootcampId(id, authUser);

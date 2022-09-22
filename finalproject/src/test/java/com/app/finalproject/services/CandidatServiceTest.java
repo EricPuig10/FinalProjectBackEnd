@@ -15,6 +15,7 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -59,6 +60,7 @@ class CandidatServiceTest {
         assertThat (sut.size(), equalTo(2));
     }
 
+
     @Test
     void findByBootcampCandidatsReturnsAListOfCandidatsRes() {
         var candidatService = new CandidatService(candidatRepository, bootcampRepository, processStateRepository);
@@ -87,4 +89,7 @@ class CandidatServiceTest {
         var sut = candidatService.findByProcessCandidats(1L, user);
         assertThat(sut, equalTo(foundCandidats));
     }
+
+
+
 }
