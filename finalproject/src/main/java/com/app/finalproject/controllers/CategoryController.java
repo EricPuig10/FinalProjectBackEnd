@@ -25,7 +25,7 @@ public class CategoryController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/categories")
+    @GetMapping("/categorias")
     List<Category> getAll(){
         User auth = authenticationFacade.getAuthUser();
         return categoryService.getAll(auth);
@@ -33,7 +33,7 @@ public class CategoryController {
 
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/categories/{id}")
+    @GetMapping("/categorias/{id}")
     Category getCategoryById(@PathVariable Long id){
         User auth = authenticationFacade.getAuthUser();
         var category = this.categoryService.findById(id, auth);
@@ -41,14 +41,14 @@ public class CategoryController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PostMapping("/categories")
+    @PostMapping("/categorias")
     Category createCategory(@RequestBody CategoryReq categoryReq){
         var authUser = authenticationFacade.getAuthUser();
         return categoryService.create(categoryReq, authUser);
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PutMapping("/categories/{id}")
+    @PutMapping("/categorias/{id}")
     Category updateCandidat(@PathVariable Long id, @RequestBody CategoryReq categoryReq) {
         User authUser = authenticationFacade.getAuthUser();
 
@@ -56,7 +56,7 @@ public class CategoryController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @DeleteMapping("/categories/{id}")
+    @DeleteMapping("/categorias/{id}")
     ResponseEntity<Category> deleteCandidat(@PathVariable Long id) {
         User authUser = authenticationFacade.getAuthUser();
         var category =  categoryService.deleteCategory(id, authUser);
