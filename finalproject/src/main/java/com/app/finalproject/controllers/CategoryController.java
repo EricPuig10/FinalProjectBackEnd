@@ -51,7 +51,6 @@ public class CategoryController {
     @PutMapping("/categorias/{id}")
     Category updateCandidat(@PathVariable Long id, @RequestBody CategoryReq categoryReq) {
         User authUser = authenticationFacade.getAuthUser();
-
         return categoryService.updateACategory(categoryReq, id, authUser);
     }
 
