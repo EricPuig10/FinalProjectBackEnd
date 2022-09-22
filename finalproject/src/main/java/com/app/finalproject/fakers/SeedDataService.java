@@ -49,7 +49,7 @@ public class SeedDataService {
         this.createProcessState2();
         this.createCategory("Full Stack");
         this.createCategory("Front End");
-        this.createCategory("Back End");
+        this.createCategory("AI");
         this.createCategory("Blockchain");
         this.createMultipleBootcamps();
         this.createMultipleCandidats();
@@ -60,14 +60,7 @@ public class SeedDataService {
         var process = new ProcessState();
         process.setName("First process");
         processStateRepository.save(process);
-        return  process;
-    }
-
-    public Category createCategory (String name){
-        var category = new Category();
-        category.setName(name);
-        categoryRepository.save(category);
-        return  category;
+        return process;
     }
 
 
@@ -76,7 +69,21 @@ public class SeedDataService {
         var process = new ProcessState();
         process.setName("Second process");
         processStateRepository.save(process);
-        return  process;
+        return process;
+    }
+
+//    public ProcessState createProcessState3() {
+//        var process = new ProcessState();
+//        process.setName("Seleccionado");
+//        processStateRepository.save(process);
+//        return process;
+//    }
+
+    public Category createCategory (String name){
+        var category = new Category();
+        category.setName(name);
+        categoryRepository.save(category);
+        return  category;
     }
 
     public Bootcamp createBootcamp(String bootcampName, Category type, String duration, String characteristics, String former, String coformer, Date initialDate, Date finalDate) {
