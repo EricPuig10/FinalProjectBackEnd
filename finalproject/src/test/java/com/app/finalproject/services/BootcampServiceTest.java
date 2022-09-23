@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -98,4 +99,6 @@ class BootcampServiceTest {
 
         assertThat(sut.getCategory(), equalTo(bootcamp.getCategory()));
     }
+
+
 }

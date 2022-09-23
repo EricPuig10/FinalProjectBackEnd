@@ -36,6 +36,7 @@ public class CandidatService implements ICandidatService {
         this.processStateRepository = processStateRepository;
     }
 
+
     @Override
     public List<CandidatRes> getAll(User auth) {
         List <Candidat> candidats = candidatRepository.findAll();
@@ -67,10 +68,10 @@ public class CandidatService implements ICandidatService {
         CandidatRes resCandidat = new CandidatMapper().mapToRes(foundCandidat.get(), auth);
         return resCandidat;
     }
-    @Override
+/*    @Override
     public List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser) {
         return new CandidatMapper().mapMultipleCandidatsToRes(candidatRepository.getCandidatsByBootcampId(id), authUser);
-    }
+    }*/
 
 
 
@@ -100,8 +101,6 @@ public class CandidatService implements ICandidatService {
 
 
         return candidatRes;
-
-
     }
 
     @Override
@@ -111,5 +110,7 @@ public class CandidatService implements ICandidatService {
         this.candidatRepository.delete(candidat);
         return resCandidat;
     }
+
+
 
 }

@@ -61,5 +61,9 @@ public class Bootcamp {
         this.duration = duration;
         this.characteristics = characteristics;
     }
+    public Bootcamp(String name) {
+        this.bootcampName = name;
+    }
+
 
 }

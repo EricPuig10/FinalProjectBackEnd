@@ -23,5 +23,5 @@ public interface ICandidatService {
 
     CandidatRes deleteCandidat(Long id, User authUser) throws IOException;
 
-    List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser);
+    //List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser);
 }
