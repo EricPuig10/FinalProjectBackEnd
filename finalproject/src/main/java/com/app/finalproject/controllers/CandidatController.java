@@ -36,12 +36,6 @@ public class CandidatController {
         return candidatService.getAll(auth);
     }
 
-//    @PreAuthorize("hasRole('ROLE_USER')")
-//    @GetMapping("/candidatos/{id}/bootcamp")
-//    List<CandidatRes> getCandidatsByBootcamp(@PathVariable Long id){
-//        User authUser = authenticationFacade.getAuthUser();
-//        return candidatService.findByBootcampCandidats(id, authUser);
-//    }
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/procesos/{id}/candidatos")
@@ -61,7 +55,7 @@ public class CandidatController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/candidatos")
-    Candidat createCandidat(@RequestBody CandidatReq candidatReq){
+    public Candidat createCandidat(@RequestBody CandidatReq candidatReq){
         var authUser = authenticationFacade.getAuthUser();
         return candidatService.create(candidatReq, authUser);
     }
@@ -86,6 +80,6 @@ public class CandidatController {
     @GetMapping("/bootcamps/{id}/candidatos")
     List<CandidatRes> getBootcampCandidates(@PathVariable Long id) {
         User authUser = authenticationFacade.getAuthUser();
-        return candidatService.findCandidatesByBootcampId(id, authUser);
+        return candidatService.findByBootcampCandidats(id, authUser);
     }
 }
