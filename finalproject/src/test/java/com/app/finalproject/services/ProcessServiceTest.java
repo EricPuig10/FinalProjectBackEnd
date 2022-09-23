@@ -4,6 +4,8 @@ import com.app.finalproject.auth.facade.IAuthenticationFacade;
 import com.app.finalproject.models.ProcessState;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IProcessStateRepository;
+import com.app.finalproject.services.processS.IProcessService;
+import com.app.finalproject.services.processS.ProcessService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -14,7 +16,6 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ProcessServiceTest {

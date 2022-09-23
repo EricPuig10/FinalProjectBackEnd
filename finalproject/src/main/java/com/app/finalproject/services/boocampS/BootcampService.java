@@ -1,9 +1,8 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.boocampS;
 
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
-import com.app.finalproject.exceptions.BadRequestException;
 import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.BootcampMapper;
 import com.app.finalproject.models.Bootcamp;

@@ -1,4 +1,4 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.categoryS;
 
 import com.app.finalproject.dtos.category.CategoryReq;
 import com.app.finalproject.models.Category;

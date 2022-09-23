@@ -1,4 +1,4 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.candidatS;
 import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.models.Candidat;
@@ -18,10 +18,12 @@ public interface ICandidatService {
 
     Candidat create(CandidatReq candidatReq, User authUser);
 
-
     CandidatRes updateACandidat(CandidatReq candidatReq, Long id, User authUser);
 
     CandidatRes deleteCandidat(Long id, User authUser) throws IOException;
 
     List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser);
+
+
+
 }

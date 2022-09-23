@@ -1,21 +1,21 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.candidatS;
 
 import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.exceptions.NotFoundException;
 import com.app.finalproject.mappers.CandidatMapper;
 import com.app.finalproject.models.Candidat;
-import com.app.finalproject.models.Image;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
 import com.app.finalproject.repositories.ICandidatRepository;
 import com.app.finalproject.repositories.IProcessStateRepository;
+import com.app.finalproject.services.ICloudinaryService;
+import com.app.finalproject.services.IImageService;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -63,7 +63,7 @@ public class CandidatService implements ICandidatService {
     @Override
     public CandidatRes findById(Long id, User auth) {
         Optional<Candidat> foundCandidat = candidatRepository.findById(id);
-        if(foundCandidat.isEmpty()) throw new NotFoundException("Candidat Not Found", "M-404");
+        if(foundCandidat.isEmpty()) throw new NotFoundException("Candidato no encontrado", "C-402");
         CandidatRes resCandidat = new CandidatMapper().mapToRes(foundCandidat.get(), auth);
         return resCandidat;
     }
@@ -71,8 +71,6 @@ public class CandidatService implements ICandidatService {
     public List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser) {
         return new CandidatMapper().mapMultipleCandidatsToRes(candidatRepository.getCandidatsByBootcampId(id), authUser);
     }
-
-
 
     @Override
     public Candidat create(CandidatReq candidatReq, User auth) {
@@ -92,7 +90,7 @@ public class CandidatService implements ICandidatService {
         var bootcamp = bootcampRepository.findByBootcampName(candidatReq.getBootcamp());
         var process = processStateRepository.findByName(candidatReq.getProcessState());
 
-        if(candidat.isEmpty()) throw new NotFoundException("Candidat Not Found", "M-404");
+        if(candidat.isEmpty()) throw new NotFoundException("Candidato no encontrado", "C-402");
 
         Candidat updatedCandidat = new CandidatMapper().mapRequestToCandidatToEdit(candidatReq, candidat.get(), bootcamp.get(), process.get());
         candidatRepository.save(updatedCandidat);

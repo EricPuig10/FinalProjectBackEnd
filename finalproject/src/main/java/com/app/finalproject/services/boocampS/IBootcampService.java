@@ -1,4 +1,4 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.boocampS;
 
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;

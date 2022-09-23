@@ -6,7 +6,7 @@ import com.app.finalproject.dtos.candidats.CandidatReq;
 import com.app.finalproject.dtos.candidats.CandidatRes;
 import com.app.finalproject.models.Candidat;
 import com.app.finalproject.models.User;
-import com.app.finalproject.services.ICandidatService;
+import com.app.finalproject.services.candidatS.ICandidatService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -55,7 +55,7 @@ public class CandidatController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/candidatos")
-    public Candidat createCandidat(@RequestBody CandidatReq candidatReq){
+    Candidat createCandidat(@RequestBody CandidatReq candidatReq){
         var authUser = authenticationFacade.getAuthUser();
         return candidatService.create(candidatReq, authUser);
     }
@@ -80,6 +80,6 @@ public class CandidatController {
     @GetMapping("/bootcamps/{id}/candidatos")
     List<CandidatRes> getBootcampCandidates(@PathVariable Long id) {
         User authUser = authenticationFacade.getAuthUser();
-        return candidatService.findByBootcampCandidats(id, authUser);
+        return candidatService.findCandidatesByBootcampId(id, authUser);
     }
 }

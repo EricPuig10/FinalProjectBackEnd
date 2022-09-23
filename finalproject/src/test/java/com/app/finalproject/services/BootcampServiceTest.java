@@ -7,6 +7,8 @@ import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
 import com.app.finalproject.repositories.ICategoryRepository;
+import com.app.finalproject.services.boocampS.BootcampService;
+import com.app.finalproject.services.boocampS.IBootcampService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -20,7 +22,6 @@ import java.util.Optional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BootcampServiceTest {

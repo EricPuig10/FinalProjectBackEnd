@@ -1,5 +1,6 @@
 package com.app.finalproject.services;
 
+import com.app.finalproject.services.ICloudinaryService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.stereotype.Service;

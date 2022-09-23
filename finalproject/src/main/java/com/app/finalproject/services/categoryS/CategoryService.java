@@ -1,4 +1,4 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.categoryS;
 
 
 import com.app.finalproject.dtos.category.CategoryReq;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CategoryService implements  ICategoryService{
+public class CategoryService implements ICategoryService {
 
     private ICategoryRepository categoryRepository;
 

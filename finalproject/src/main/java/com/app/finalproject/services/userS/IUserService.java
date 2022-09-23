@@ -1,4 +1,4 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.userS;
 
 import com.app.finalproject.models.User;
 

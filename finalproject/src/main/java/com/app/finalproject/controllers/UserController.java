@@ -1,7 +1,7 @@
 package com.app.finalproject.controllers;
 
 import com.app.finalproject.models.User;
-import com.app.finalproject.services.IUserService;
+import com.app.finalproject.services.userS.IUserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

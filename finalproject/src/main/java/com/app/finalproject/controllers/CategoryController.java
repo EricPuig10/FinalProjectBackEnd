@@ -4,7 +4,7 @@ import com.app.finalproject.auth.facade.AuthenticationFacade;
 import com.app.finalproject.dtos.category.CategoryReq;
 import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
-import com.app.finalproject.services.ICategoryService;
+import com.app.finalproject.services.categoryS.ICategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

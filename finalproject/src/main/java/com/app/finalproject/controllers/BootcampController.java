@@ -5,7 +5,7 @@ import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.models.Bootcamp;
 import com.app.finalproject.models.User;
-import com.app.finalproject.services.IBootcampService;
+import com.app.finalproject.services.boocampS.IBootcampService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
