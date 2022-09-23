@@ -101,6 +101,24 @@ class BootcampServiceTest {
     }
 
     @Test
+    void updateBootcampShouldModifyABootcampFromBootcampReqDto() {
+        var bootcampRequest = new BootcampReqDto("name", "category", "300", "type", "former", "coformer", new Date(), new Date());
+        var bootcamp = createBootcamp();
+        var authUser = new User();
+        var category = new Category("category");
+
+        Mockito.when(bootcampRepository.findById(any(Long.class))).thenReturn(Optional.of(bootcamp));
+        Mockito.when(categoryRepository.findByName(any(String.class))).thenReturn(Optional.of(category));
+        Mockito.when(bootcampRepository.save(any(Bootcamp.class))).thenReturn(bootcamp);
+
+        var sut = bootcampService.updateBootcamp(bootcampRequest, 1L, authUser);
+
+        assertThat(sut.getBootcampName(), equalTo(bootcampRequest.getBootcampName()));
+        assertThat(sut.getFormer(), equalTo(bootcampRequest.getFormer()));
+//        assertThat(sut.getCategory(), equalTo(bootcampRequest.getCategory())); no passa perquè li passo string category i demana objecte category
+    }
+
+    @Test
     void deleteBootcampShouldDeleteABootcampById() {
 
         var bootcamp = createBootcamp();
