@@ -1,6 +1,7 @@
 package com.app.finalproject.controllers;
 
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
+import com.app.finalproject.dtos.Message;
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.models.Bootcamp;
@@ -52,7 +53,7 @@ public class BootcampController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @DeleteMapping("/bootcamps/{id}")
-    ResponseEntity<Boolean> deleteBootcamp(@PathVariable Long id){
+    ResponseEntity<Message> deleteBootcamp(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
         var bootcampToDelete = bootcampService.deleteBootcamp(id, authUser);
         return new ResponseEntity<>(bootcampToDelete, HttpStatus.OK);

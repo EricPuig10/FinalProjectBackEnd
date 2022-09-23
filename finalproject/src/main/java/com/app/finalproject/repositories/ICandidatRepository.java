@@ -12,10 +12,10 @@ import java.util.List;
 public interface ICandidatRepository extends JpaRepository<Candidat, Long> {
 
     @Query("select c from Candidat c where c.bootcamp.id = :id")
-    List<Candidat> getCandidatsByBootcampId(@Param("id") Long id);
+    List<Candidat> getCandidatesByBootcampId(@Param("id") Long id);
 
     @Query("select c from Candidat c where c.processState.id = :id")
-    List<Candidat> getCandidatsByProcessId(@Param("id") Long id);
+    List<Candidat> getCandidatesByProcessId(@Param("id") Long id);
 
 
     

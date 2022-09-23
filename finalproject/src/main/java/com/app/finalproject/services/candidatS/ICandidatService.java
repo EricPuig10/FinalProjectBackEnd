@@ -10,9 +10,9 @@ import java.util.List;
 public interface ICandidatService {
     List<CandidatRes> getAll(User auth);
 
-    List<CandidatRes> findByBootcampCandidats(Long id, User authUser);
+//    List<CandidatRes> findByBootcampCandidats(Long id, User authUser);
 
-    List<CandidatRes> findByProcessCandidats(Long id, User authUser);
+    List<CandidatRes> findCandidatesByProcessId(Long id, User authUser);
 
     CandidatRes findById(Long id, User auth);
 

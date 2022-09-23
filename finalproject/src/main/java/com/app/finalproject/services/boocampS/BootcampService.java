@@ -1,6 +1,7 @@
 package com.app.finalproject.services.boocampS;
 
 import com.app.finalproject.auth.facade.IAuthenticationFacade;
+import com.app.finalproject.dtos.Message;
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.exceptions.NotFoundException;
@@ -63,11 +64,11 @@ public class BootcampService implements IBootcampService {
     }
 
     @Override
-    public boolean deleteBootcamp(Long id, User auth){
+    public Message deleteBootcamp(Long id, User auth){
         Bootcamp bootcamp = this.bootcampRepository.findById(id).get();
         BootcampResDto BootcampRes = new BootcampMapper().mapBootcampToBootcampResponseDto(bootcamp, auth);
         this.bootcampRepository.delete(bootcamp);
-        return true;
+        return new Message("El bootcamp "+bootcamp.getBootcampName()+" ha sido eliminado!");
     }
 
 

@@ -62,7 +62,7 @@ class CandidatServiceTest {
 
 
     @Test
-    void findByBootcampCandidatsReturnsAListOfCandidatsRes() {
+    void findCandidatesByBootcampIdReturnsAListOfCandidatsRes() {
         var candidatService = new CandidatService(candidatRepository, bootcampRepository, processStateRepository);
         Candidat candidat = this.createCandidat();
         var user = new User();
@@ -70,13 +70,13 @@ class CandidatServiceTest {
         CandidatRes res = new CandidatMapper().mapToRes(candidat, user);
         var filtered = List.of(candidat);
         var foundCandidats = List.of(res);
-        Mockito.when(candidatRepository.getCandidatsByBootcampId(any(Long.class))).thenReturn(filtered);
-        var sut = candidatService.findByBootcampCandidats(1L, user);
+        Mockito.when(candidatRepository.getCandidatesByBootcampId(any(Long.class))).thenReturn(filtered);
+        var sut = candidatService.findCandidatesByBootcampId(1L, user);
         assertThat(sut, equalTo(foundCandidats));
     }
 
     @Test
-    void findByProcessCandidatsReturnsAListOfCandidatsRes() {
+    void findCandidatesByProcessIdReturnsAListOfCandidatsRes() {
 
         var candidatService = new CandidatService(candidatRepository, bootcampRepository, processStateRepository);
         Candidat candidat = this.createCandidat();
@@ -85,8 +85,8 @@ class CandidatServiceTest {
         CandidatRes res = new CandidatMapper().mapToRes(candidat, user);
         var filtered = List.of(candidat);
         var foundCandidats = List.of(res);
-        Mockito.when(candidatRepository.getCandidatsByProcessId(any(Long.class))).thenReturn(filtered);
-        var sut = candidatService.findByProcessCandidats(1L, user);
+        Mockito.when(candidatRepository.getCandidatesByProcessId(any(Long.class))).thenReturn(filtered);
+        var sut = candidatService.findCandidatesByProcessId(1L, user);
         assertThat(sut, equalTo(foundCandidats));
     }
 

@@ -41,7 +41,7 @@ public class CandidatController {
     @GetMapping("/procesos/{id}/candidatos")
     List<CandidatRes> getProcessCandidats(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
-        return candidatService.findByProcessCandidats(id, authUser);
+        return candidatService.findCandidatesByProcessId(id, authUser);
     }
 
 
