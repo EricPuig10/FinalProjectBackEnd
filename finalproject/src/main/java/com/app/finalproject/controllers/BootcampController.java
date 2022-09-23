@@ -52,10 +52,10 @@ public class BootcampController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @DeleteMapping("/bootcamps/{id}")
-    ResponseEntity<BootcampResDto> deleteBootcamp(@PathVariable Long id){
+    ResponseEntity<Boolean> deleteBootcamp(@PathVariable Long id){
         User authUser = authenticationFacade.getAuthUser();
-        var bootcamp = bootcampService.deleteBootcamp(id, authUser);
-        return new ResponseEntity<>(bootcamp, HttpStatus.OK);
+        var bootcampToDelete = bootcampService.deleteBootcamp(id, authUser);
+        return new ResponseEntity<>(bootcampToDelete, HttpStatus.OK);
     }
 
 

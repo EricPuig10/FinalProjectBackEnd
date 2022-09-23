@@ -98,4 +98,19 @@ class BootcampServiceTest {
 
         assertThat(sut.getCategory(), equalTo(bootcamp.getCategory()));
     }
+
+    @Test
+    void deleteBootcampShouldDeleteABootcampById() {
+
+        var bootcamp = createBootcamp();
+        var authUser = new User();
+
+        Mockito.when(bootcampRepository.findById(any(Long.class))).thenReturn(Optional.of(bootcamp));
+
+        var sut = bootcampService.deleteBootcamp(1L, authUser);
+
+        assertThat(sut, equalTo(true));
+//       FAILING TEST: assertThat(sut, equalTo(false));
+
+    }
 }

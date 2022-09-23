@@ -64,11 +64,11 @@ public class BootcampService implements IBootcampService {
     }
 
     @Override
-    public BootcampResDto deleteBootcamp(Long id, User auth){
+    public boolean deleteBootcamp(Long id, User auth){
         Bootcamp bootcamp = this.bootcampRepository.findById(id).get();
         BootcampResDto BootcampRes = new BootcampMapper().mapBootcampToBootcampResponseDto(bootcamp, auth);
         this.bootcampRepository.delete(bootcamp);
-        return BootcampRes;
+        return true;
     }
 
 
