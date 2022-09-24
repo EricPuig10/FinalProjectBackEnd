@@ -21,10 +21,8 @@ import java.util.Optional;
 @Service
 public class CandidatService implements ICandidatService {
 
-
     private ICandidatRepository candidatRepository;
     private IBootcampRepository bootcampRepository;
-
     private IProcessStateRepository processStateRepository;
 
     ICloudinaryService cloudinaryService;
@@ -67,6 +65,7 @@ public class CandidatService implements ICandidatService {
         CandidatRes resCandidat = new CandidatMapper().mapToRes(foundCandidat.get(), auth);
         return resCandidat;
     }
+
     @Override
     public List<CandidatRes> findCandidatesByBootcampId(Long id, User authUser) {
         return new CandidatMapper().mapMultipleCandidatsToRes(candidatRepository.getCandidatesByBootcampId(id), authUser);
@@ -97,7 +96,6 @@ public class CandidatService implements ICandidatService {
         CandidatRes candidatRes = new CandidatMapper().mapToRes(updatedCandidat, auth);
 
         return candidatRes;
-
     }
 
     @Override

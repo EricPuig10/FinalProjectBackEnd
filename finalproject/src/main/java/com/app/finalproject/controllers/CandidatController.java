@@ -55,7 +55,7 @@ public class CandidatController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/candidatos")
-    Candidat createCandidat(@RequestBody CandidatReq candidatReq){
+    public Candidat createCandidat(@RequestBody CandidatReq candidatReq){
         var authUser = authenticationFacade.getAuthUser();
         return candidatService.create(candidatReq, authUser);
     }

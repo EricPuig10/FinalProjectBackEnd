@@ -1,5 +1,6 @@
 package com.app.finalproject.services.userS;
 
+import com.app.finalproject.auth.facade.IAuthenticationFacade;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IUserRepository;
 import com.app.finalproject.services.userS.IUserService;
@@ -12,7 +13,7 @@ public class UserService implements IUserService {
 
     private IUserRepository userRepository;
 
-    public UserService(IUserRepository userRepository) {
+    public UserService(IUserRepository userRepository, IAuthenticationFacade authenticationFacade) {
         this.userRepository = userRepository;
     }
 
@@ -22,7 +23,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User getById(Long id) {
+    public User getById(Long id, User authUser) {
         return (User) userRepository.findById(id).get();
     }
 }

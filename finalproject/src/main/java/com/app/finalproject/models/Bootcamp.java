@@ -57,6 +57,10 @@ public class Bootcamp {
 //        this.characteristics = characteristics;
 //    }
 
+    // FOR TESTING CANDIDATES
+    public Bootcamp(String name) {
+        this.bootcampName = name;
+    }
 
 
 }

@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,7 @@ import java.util.Optional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BootcampServiceTest {
@@ -130,6 +132,5 @@ class BootcampServiceTest {
 
         assertThat(sut, equalTo(true));
 //       FAILING TEST: assertThat(sut, equalTo(false));
-
     }
 }
