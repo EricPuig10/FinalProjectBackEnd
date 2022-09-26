@@ -124,13 +124,13 @@ class BootcampServiceTest {
     void deleteBootcampShouldDeleteABootcampById() {
 
         var bootcamp = createBootcamp();
+        bootcamp.setBootcampName("Osonaa");
         var authUser = new User();
 
         Mockito.when(bootcampRepository.findById(any(Long.class))).thenReturn(Optional.of(bootcamp));
 
         var sut = bootcampService.deleteBootcamp(1L, authUser);
-
-        assertThat(sut, equalTo(true));
-//       FAILING TEST: assertThat(sut, equalTo(false));
+        var resmsg = "El bootcamp Osonaa ha sido eliminado!";
+        assertThat(sut.getMessage(), equalTo(resmsg));
     }
 }

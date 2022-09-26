@@ -170,7 +170,7 @@ class CandidatServiceTest {
     }
 
     @Test
-    void updateCandidatReturnsNotFoundExceotionIfDontExistCandidat() {
+    void updateCandidatReturnsNotFoundExceptionIfDontExistCandidat() {
 
         var req = new CandidatReq("Eric", "Puigvendrello", "Soldado", "puigvendrelloetona@gmail.com", 123456789L, 21L, "Bachillerato", "Invisibilidad" , "Calle 13", "B1" , "Full Stack", "Instagram", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500", "Masculino", "Cataluña", "Desempleado", "Osona", "Registradx", "https://media-exp1.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_800_800/0/1587477510501?e=1668038400&v=beta&t=CDPVd3nDIuH06ntqP_TcBYJJYfo-SmgegCV6zvB1CHI", "Tona", "NIF", "11111111W", new Date(), "https://www.codecademy.com/profiles/EricPuig", "https://www.sololearn.com/profile/24969081", true);
         var user = new User();
@@ -178,7 +178,7 @@ class CandidatServiceTest {
         Exception ex = assertThrows(NotFoundException.class, ()->{
             candidatService.updateACandidat(req, 1L, user);
         });
-        var resmsg = "Candidat Not Found";
+        var resmsg = "Candidato no encontrado";
         var sut = ex.getMessage();
         assertTrue(sut.equals(resmsg));
     }
