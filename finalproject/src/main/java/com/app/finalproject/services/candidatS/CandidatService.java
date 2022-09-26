@@ -61,7 +61,7 @@ public class CandidatService implements ICandidatService {
     @Override
     public CandidatRes findById(Long id, User auth) {
         Optional<Candidat> foundCandidat = candidatRepository.findById(id);
-        if(foundCandidat.isEmpty()) throw new NotFoundException("Candidato no encontrado", "C-402");
+        if(foundCandidat.isEmpty()) throw new NotFoundException("Candidato no encontrado", "C-404");
         CandidatRes resCandidat = new CandidatMapper().mapToRes(foundCandidat.get(), auth);
         return resCandidat;
     }
@@ -89,7 +89,7 @@ public class CandidatService implements ICandidatService {
         var bootcamp = bootcampRepository.findByBootcampName(candidatReq.getBootcamp());
         var process = processStateRepository.findByName(candidatReq.getProcessState());
 
-        if(candidat.isEmpty()) throw new NotFoundException("Candidato no encontrado", "C-402");
+        if(candidat.isEmpty()) throw new NotFoundException("Candidato no encontrado", "C-404");
 
         Candidat updatedCandidat = new CandidatMapper().mapRequestToCandidatToEdit(candidatReq, candidat.get(), bootcamp.get(), process.get());
         candidatRepository.save(updatedCandidat);

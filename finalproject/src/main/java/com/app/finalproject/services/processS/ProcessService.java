@@ -41,7 +41,7 @@ public class ProcessService implements IProcessService {
     @Override
     public ProcessRes findById(Long id, User auth) {
         Optional<ProcessState> foundProcess = processStateRepository.findById(id);
-        if (foundProcess.isEmpty()) throw new NotFoundException("Process Not Found", "B-404");
+        if (foundProcess.isEmpty()) throw new NotFoundException("Proceso no encontrado", "P-404");
         ProcessRes processRes = new ProcessMapper().mapProcessToRes(foundProcess.get(), auth);
         return processRes;
     }

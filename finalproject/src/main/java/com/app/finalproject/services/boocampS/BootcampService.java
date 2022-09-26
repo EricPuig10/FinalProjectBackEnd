@@ -40,7 +40,7 @@ public class BootcampService implements IBootcampService {
     @Override
     public BootcampResDto findById(Long id, User auth) {
         Optional<Bootcamp> foundBootcamp = bootcampRepository.findById(id);
-        if (foundBootcamp.isEmpty()) throw new NotFoundException("Bootcamp Not Found", "B-404");
+        if (foundBootcamp.isEmpty()) throw new NotFoundException("Bootcamp no encontrado", "B-404");
         BootcampResDto bootcampResDto = new BootcampMapper().mapBootcampToBootcampResponseDto(foundBootcamp.get(), auth);
         return bootcampResDto;
     }
@@ -56,7 +56,7 @@ public class BootcampService implements IBootcampService {
     public BootcampResDto updateBootcamp(BootcampReqDto bootcampReqDto, Long id, User authUser) {
         var bootcamp = bootcampRepository.findById(id);
         var category = categoryRepository.findByName(bootcampReqDto.getCategory());
-        if(bootcamp.isEmpty()) throw new NotFoundException("Bootcamp Not Found", "B-404");
+        if(bootcamp.isEmpty()) throw new NotFoundException("Bootcamp no encontrado", "B-404");
         Bootcamp updatedBootcamp = new BootcampMapper().mapRequestToBootcampToEdit(bootcampReqDto, bootcamp.get(), category.get());
         bootcampRepository.save(updatedBootcamp);
         BootcampResDto bootcampResDto = new BootcampMapper().mapBootcampToBootcampResponseDto(updatedBootcamp,authUser);
@@ -70,8 +70,5 @@ public class BootcampService implements IBootcampService {
         this.bootcampRepository.delete(bootcamp);
         return new Message("El bootcamp "+bootcamp.getBootcampName()+" ha sido eliminado!");
     }
-
-
-
 
 }

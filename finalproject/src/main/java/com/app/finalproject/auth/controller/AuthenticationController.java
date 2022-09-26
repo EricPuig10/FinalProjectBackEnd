@@ -52,6 +52,10 @@ public class AuthenticationController {
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
+        if(!authRepository.existsByUsername(loginRequest.getUsername())) {
+            return ResponseEntity.badRequest().body(new MessageResponse(loginRequest.getUsername()+" no existe!"));
+        }
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
