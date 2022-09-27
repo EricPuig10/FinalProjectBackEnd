@@ -70,8 +70,11 @@ class CandidatServiceTest {
         CandidatRes res = new CandidatMapper().mapToRes(candidat, user);
         var filtered = List.of(candidat);
         var foundCandidats = List.of(res);
+
         Mockito.when(candidatRepository.getCandidatsByBootcampId(any(Long.class))).thenReturn(filtered);
+
         var sut = candidatService.findByBootcampCandidats(1L, user);
+
         assertThat(sut, equalTo(foundCandidats));
     }
 

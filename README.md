@@ -3,7 +3,7 @@ FACTORIA F5 APP
 
 ## TABLE OF CONTENTS
 1. [GENERAL INFO](#GENERAL-INFO)
-2. [TECHNOLOGIES & TOOLS](#STACK)
+2. [STACK](#STACK)
 3. [INSTALLATION](#INSTALLATION_)
 
 ***
@@ -28,18 +28,20 @@ The exceptions control is made from the backend.
 - Postman
 - H2 hibernate
 - JUnit + Mockito
-- Figma
 - Trello
 
 
 ## HOW DOES IT WORK
->Entity Relation diagram with Candidates, Bootcamps & Process State models
+>Entity Relation diagram with Candidates, Bootcamps & Process State models.
+> 
 ![FACTORIA_MACKBOOK_ENTITY](https://user-images.githubusercontent.com/102957525/192268919-2018cc02-d1ac-455b-9013-8ce92805b80b.png)
 
 >We use the H2 hibernate data base for development and JPA for data persistence.
+> 
 ![H2hibernate](https://user-images.githubusercontent.com/102729704/192353838-2352512f-5397-491b-bc96-8fd83e1aa667.jpg)
 
 >We also use Postman to check the call and callback between back and front.
+> 
 ![Postman](https://user-images.githubusercontent.com/102729704/192353881-cb8cd986-dfc1-4b2b-b190-9d15bd2d9a75.jpg)
 
 >Unit testing with JUnit and Mockito
@@ -51,6 +53,9 @@ The exceptions control is made from the backend.
 ```
 git clone https://github.com/EricPuig10/FinalProjectBackEnd
 ```
+
+## NEXT
+Check exceptions validations for dates and numbers.
 
 ## TEAM
 
