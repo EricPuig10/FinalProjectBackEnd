@@ -31,17 +31,12 @@ public class Bootcamp {
     private String bootcampName;
     private String duration;
     private String characteristics;
-
     private String former;
-
     private String coformer;
-
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date initialDate;
-
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date finalDate;
-
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -54,12 +49,18 @@ public class Bootcamp {
 
 
 
-    public Bootcamp(Long id, String bootcampName, Category category, String duration, String characteristics) {
-        this.id = id;
-        this.bootcampName = bootcampName;
-        this.category = category;
-        this.duration = duration;
-        this.characteristics = characteristics;
+//    public Bootcamp(Long id, String bootcampName, Category category, String duration, String characteristics) {
+//        this.id = id;
+//        this.bootcampName = bootcampName;
+//        this.category = category;
+//        this.duration = duration;
+//        this.characteristics = characteristics;
+//    }
+
+    // FOR TESTING CANDIDATES
+    public Bootcamp(String name) {
+        this.bootcampName = name;
     }
+
 
 }

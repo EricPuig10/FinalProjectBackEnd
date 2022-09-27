@@ -24,7 +24,6 @@ public class CloudinaryController {
 
 
     ICloudinaryService cloudinaryService;
-
     IImageService imageService;
 
     @Autowired
@@ -33,21 +32,17 @@ public class CloudinaryController {
         this.imageService = imageService;
     }
 
-
-
-
     @GetMapping("/images")
     public ResponseEntity<List<Image>> getAll(){
         List<Image> images = imageService.getAllImages();
         return new ResponseEntity<>(images, HttpStatus.OK);
     }
 
-
     @PostMapping("/upload")
     public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile) throws IOException {
         BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
         if(bi == null) {
-            return new ResponseEntity(new Message("Image non valid"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Message("Imagen no válida"), HttpStatus.BAD_REQUEST);
         }
         Map result = cloudinaryService.upload(multipartFile);
         Image image =
@@ -55,18 +50,17 @@ public class CloudinaryController {
                         result.get("url").toString(),
                         result.get("public_id").toString());
         imageService.save(image);
-        return new ResponseEntity(new ImageResDto("Image uploaded", image.getImgUrl(), image.getId()), HttpStatus.OK);
+        return new ResponseEntity(new ImageResDto("Imagen cargada", image.getImgUrl(), image.getId()), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) throws IOException {
         /*if(!imageService.exists(id))
-            return new ResponseEntity(new Message("Doesnt exxists"), HttpStatus.NOT_FOUND);*/
+            return new ResponseEntity(new Message("Doesnt exists"), HttpStatus.NOT_FOUND);*/
         Image image = imageService.findById(id);
         Map result = cloudinaryService.delete(image.getImgId());
         imageService.delete(id);
-        return new ResponseEntity(new ImageResDto("Image deleted", image.getImgUrl(), image.getId()), HttpStatus.OK);
+        return new ResponseEntity(new ImageResDto("Imagen eliminada", image.getImgUrl(), image.getId()), HttpStatus.OK);
     }
-
 
 }

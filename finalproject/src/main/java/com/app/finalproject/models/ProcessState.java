@@ -29,4 +29,8 @@ public class ProcessState {
     @JsonIgnore
     private List<Candidat> candidatsList = new ArrayList<>();
 
+    // FOR TESTING CANDIDATES
+    public ProcessState(String name) {
+        this.name = name;
+    }
 }

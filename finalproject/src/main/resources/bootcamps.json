@@ -11,7 +11,7 @@
   },
   {
     "bootcampName": "FemTech",
-    "category": "AI",
+    "category": "Full Stack",
     "duration": "850",
     "characteristics": "Bootcamp de mujeres",
     "former": "Sergi",
@@ -24,6 +24,36 @@
     "category": "Front End",
     "duration": "300",
     "characteristics": "Bootcamp de mujeres",
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
+  },
+  {
+    "bootcampName": "BarcelonaFront",
+    "category": "Front End",
+    "duration": "300",
+    "characteristics": "Bootcamp front-end",
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
+  },
+  {
+    "bootcampName": "AI Madrid",
+    "category": "AI",
+    "duration": "300",
+    "characteristics": "Bootcamp de AI",
+    "former": "Sergi",
+    "coformer" : "Alex",
+    "initialDate": "2000-01-21",
+    "finalDate": "2000-09-21"
+  },
+  {
+    "bootcampName": "Terres de l'Ebre",
+    "category": "Full Stack",
+    "duration": "850",
+    "characteristics": "Bootcamp mixto",
     "former": "Sergi",
     "coformer" : "Alex",
     "initialDate": "2000-01-21",

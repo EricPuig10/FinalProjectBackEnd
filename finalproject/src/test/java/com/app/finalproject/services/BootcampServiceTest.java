@@ -7,12 +7,15 @@ import com.app.finalproject.models.Category;
 import com.app.finalproject.models.User;
 import com.app.finalproject.repositories.IBootcampRepository;
 import com.app.finalproject.repositories.ICategoryRepository;
+import com.app.finalproject.services.boocampS.BootcampService;
+import com.app.finalproject.services.boocampS.IBootcampService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -97,5 +100,37 @@ class BootcampServiceTest {
         var sut = bootcampService.createBootcamp(bootcampRequest, authUser);
 
         assertThat(sut.getCategory(), equalTo(bootcamp.getCategory()));
+    }
+
+    @Test
+    void updateBootcampShouldModifyABootcampFromBootcampReqDto() {
+        var bootcampRequest = new BootcampReqDto("name", "category", "300", "type", "former", "coformer", new Date(), new Date());
+        var bootcamp = createBootcamp();
+        var authUser = new User();
+        var category = new Category("category");
+
+        Mockito.when(bootcampRepository.findById(any(Long.class))).thenReturn(Optional.of(bootcamp));
+        Mockito.when(categoryRepository.findByName(any(String.class))).thenReturn(Optional.of(category));
+        Mockito.when(bootcampRepository.save(any(Bootcamp.class))).thenReturn(bootcamp);
+
+        var sut = bootcampService.updateBootcamp(bootcampRequest, 1L, authUser);
+
+        assertThat(sut.getBootcampName(), equalTo(bootcampRequest.getBootcampName()));
+        assertThat(sut.getFormer(), equalTo(bootcampRequest.getFormer()));
+//        assertThat(sut.getCategory(), equalTo(bootcampRequest.getCategory())); no passa perquè li passo string category i demana objecte category
+    }
+
+    @Test
+    void deleteBootcampShouldDeleteABootcampById() {
+
+        var bootcamp = createBootcamp();
+        bootcamp.setBootcampName("Osonaa");
+        var authUser = new User();
+
+        Mockito.when(bootcampRepository.findById(any(Long.class))).thenReturn(Optional.of(bootcamp));
+
+        var sut = bootcampService.deleteBootcamp(1L, authUser);
+        var resmsg = "El bootcamp Osonaa ha sido eliminado!";
+        assertThat(sut.getMessage(), equalTo(resmsg));
     }
 }

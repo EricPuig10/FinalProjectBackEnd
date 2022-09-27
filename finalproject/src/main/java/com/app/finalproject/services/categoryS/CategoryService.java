@@ -1,4 +1,4 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.categoryS;
 
 
 import com.app.finalproject.dtos.category.CategoryReq;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CategoryService implements  ICategoryService{
+public class CategoryService implements ICategoryService {
 
     private ICategoryRepository categoryRepository;
 
@@ -27,7 +27,7 @@ public class CategoryService implements  ICategoryService{
     @Override
     public Category findById(Long id, User auth) {
         var category = categoryRepository.findById(id);
-        if(category.isEmpty()) throw new NotFoundException("Etiqueta no encontrada", "C-404");
+        if(category.isEmpty()) throw new NotFoundException("Etiqueta no encontrada", "T-404");
         return category.get();
     }
 
@@ -43,7 +43,7 @@ public class CategoryService implements  ICategoryService{
     public Category updateACategory(CategoryReq categoryReq, Long id, User authUser) {
         var category = categoryRepository.findById(id);
 
-        if(category.isEmpty()) throw new NotFoundException("Categoría no encontrada", "C-404");
+        if(category.isEmpty()) throw new NotFoundException("Categoría no encontrada", "T-404");
 
         category.get().setName(categoryReq.getName());
 

@@ -44,6 +44,7 @@ public class ImageService implements IImageService {
         return imageRepository.existsById(id);
     }
 
-
-
+    public ImageService(IImageRepository imageRepository) {
+        this.imageRepository = imageRepository;
+    }
 }

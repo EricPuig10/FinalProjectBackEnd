@@ -1,5 +1,6 @@
-package com.app.finalproject.services;
+package com.app.finalproject.services.boocampS;
 
+import com.app.finalproject.dtos.Message;
 import com.app.finalproject.dtos.bootcamp.BootcampReqDto;
 import com.app.finalproject.dtos.bootcamp.BootcampResDto;
 import com.app.finalproject.models.Bootcamp;
@@ -14,7 +15,7 @@ public interface IBootcampService {
 
     Bootcamp createBootcamp(BootcampReqDto bootcampReqDto, User authUser);
 
-    BootcampResDto deleteBootcamp(Long id, User authUser);
+    Message deleteBootcamp(Long id, User authUser);
 
     BootcampResDto updateBootcamp(BootcampReqDto bootcampReqDto, Long id, User authUser);
 

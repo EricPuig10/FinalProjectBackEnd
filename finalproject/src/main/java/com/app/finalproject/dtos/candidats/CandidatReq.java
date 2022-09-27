@@ -3,12 +3,16 @@ package com.app.finalproject.dtos.candidats;
 import com.app.finalproject.models.Document;
 import com.app.finalproject.models.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
+@Builder
 public class CandidatReq {
     private String name;
     private String lastname;
